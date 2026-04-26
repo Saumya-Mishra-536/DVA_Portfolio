@@ -3,346 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Somi Analytics</title>
+<title>Projects — Saumya Mishra</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#0d0d0d;--black2:#111111;--charcoal:#1a1a1a;--surface:#1f1f1f;--surface2:#242424;
+  --pink:#e8196c;--pink2:#ff2d7e;--pink-light:#f472b6;
+  --text:#f0e8e8;--text2:#9a8a8a;--text3:#c8b8b8;
+  --border:rgba(232,25,108,0.12);--border2:rgba(232,25,108,0.28);
+  --yellow:#f5c842;--blue:#5b9cf6;--green:#34d399;
+}
+body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 
-:root {
-  --black: #0d0d0d;
-  --black2: #111111;
-  --charcoal: #1a1a1a;
-  --surface: #1f1f1f;
-  --surface2: #242424;
-  --pink: #e8196c;
-  --pink2: #ff2d7e;
-  --pink-light: #f472b6;
-  --blush: rgba(232,25,108,0.08);
-  --gold: #c9a84c;
-  --text: #f0e8e8;
-  --text2: #9a8a8a;
-  --text3: #c8b8b8;
-  --border: rgba(232,25,108,0.12);
-  --border2: rgba(232,25,108,0.28);
-  --yellow: #f5c842;
-  --blue: #5b9cf6;
-  --green: #34d399;
-}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(13,13,13,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:.05em}
+.nav-logo span{color:var(--pink)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--pink)}
 
-body {
-  background: var(--black);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
-}
+.page-header{padding:4rem 4rem 2.5rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--black2) 0%,var(--black) 100%);position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;top:-100px;right:0;width:500px;height:400px;background:radial-gradient(ellipse,rgba(232,25,108,.08) 0%,transparent 70%);pointer-events:none}
+.breadcrumb{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--text2);margin-bottom:1.2rem}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.1;margin-bottom:.8rem}
+.page-title em{font-style:italic;color:var(--pink)}
+.page-subtitle{font-size:.88rem;color:var(--text2);line-height:1.7;max-width:520px}
 
-/* ── NAV ── */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.1rem 4rem;
-  background: rgba(13,13,13,0.95);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem; font-weight: 600;
-  color: var(--text); text-decoration: none;
-  letter-spacing: 0.05em;
-}
-.nav-logo span { color: var(--pink); }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-  font-size: 0.75rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--text2);
-  text-decoration: none; transition: color 0.2s;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--pink); }
+.filter-wrap{padding:2rem 4rem 0;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.filter-btn{padding:.45rem 1.1rem;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text2);transition:all .18s}
+.filter-btn:hover{border-color:var(--pink);color:var(--pink)}
+.filter-btn.active{background:var(--pink);color:#fff;border-color:var(--pink)}
 
-/* ── PAGE HEADER ── */
-.page-header {
-  padding: 4rem 4rem 2.5rem;
-  border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--black2) 0%, var(--black) 100%);
-  position: relative; overflow: hidden;
-}
-.page-header::before {
-  content: '';
-  position: absolute; top: -100px; right: 0;
-  width: 500px; height: 400px;
-  background: radial-gradient(ellipse, rgba(232,25,108,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.breadcrumb {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem; letter-spacing: 0.2em;
-  color: var(--text2); margin-bottom: 1.2rem;
-}
-.breadcrumb a { color: var(--pink); text-decoration: none; }
-.page-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300; line-height: 1.1;
-  margin-bottom: 0.8rem;
-}
-.page-title em { font-style: italic; color: var(--pink); }
-.page-subtitle {
-  font-size: 0.88rem; color: var(--text2);
-  line-height: 1.7; max-width: 520px;
-}
+.projects-wrap{padding:3rem 4rem 6rem}
 
-/* ── FILTER TABS ── */
-.filter-wrap {
-  padding: 2rem 4rem 0;
-  display: flex; align-items: center; gap: 0.6rem;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  padding: 0.45rem 1.1rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem; letter-spacing: 0.12em;
-  text-transform: uppercase; cursor: pointer;
-  border: 1px solid var(--border2);
-  background: transparent; color: var(--text2);
-  transition: all 0.18s; border-radius: 0;
-}
-.filter-btn:hover { border-color: var(--pink); color: var(--pink); }
-.filter-btn.active {
-  background: var(--pink); color: #fff;
-  border-color: var(--pink);
-}
+.category-section{margin-bottom:5rem;transition:opacity .3s}
+.category-section.hidden{display:none}
 
-/* ── CATEGORY SECTIONS ── */
-.projects-wrap {
-  padding: 3rem 4rem 6rem;
-}
+.category-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.category-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.cat-python .category-dot{background:var(--yellow)}
+.cat-tableau .category-dot{background:var(--blue)}
+.cat-looker .category-dot{background:var(--green)}
+.cat-excel .category-dot{background:var(--pink)}
+.category-name{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase}
+.cat-python .category-name{color:var(--yellow)}
+.cat-tableau .category-name{color:var(--blue)}
+.cat-looker .category-name{color:var(--green)}
+.cat-excel .category-name{color:var(--pink)}
+.category-desc{font-size:.75rem;color:var(--text2)}
+.category-count{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--text2);margin-left:auto;letter-spacing:.1em}
 
-.category-section {
-  margin-bottom: 5rem;
-}
-.category-header {
-  display: flex; align-items: center; gap: 1.2rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
-}
-.category-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.cat-python .category-dot { background: var(--yellow); }
-.cat-tableau .category-dot { background: var(--blue); }
-.cat-looker .category-dot { background: var(--green); }
-.cat-excel .category-dot { background: var(--pink); }
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
 
-.category-name {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.75rem; letter-spacing: 0.25em;
-  text-transform: uppercase;
-}
-.cat-python .category-name { color: var(--yellow); }
-.cat-tableau .category-name { color: var(--blue); }
-.cat-looker .category-name { color: var(--green); }
-.cat-excel .category-name { color: var(--pink); }
+.project-card{background:var(--charcoal);border:1px solid var(--border);display:flex;flex-direction:column;transition:border-color .22s,transform .22s,box-shadow .22s;cursor:pointer;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.project-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,25,108,.03) 0%,transparent 60%);pointer-events:none;opacity:0;transition:opacity .22s}
+.project-card:hover{border-color:rgba(232,25,108,.45);transform:translateY(-4px);box-shadow:0 12px 40px rgba(232,25,108,.1)}
+.project-card:hover::after{opacity:1}
 
-.category-count {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem; color: var(--text2);
-  margin-left: auto;
-  letter-spacing: 0.1em;
-}
-.category-desc {
-  font-size: 0.75rem; color: var(--text2);
-}
+.card-thumb{width:100%;height:160px;background:var(--surface2);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+.card-thumb svg{width:100%;height:100%;position:absolute;inset:0}
 
-/* ── PROJECT CARDS GRID ── */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.2rem;
-}
+.card-body{padding:1.25rem 1.4rem;flex:1;display:flex;flex-direction:column;gap:.6rem}
+.card-top-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.1rem}
+.card-cat-badge{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:2px 7px;font-weight:500}
+.badge-python{background:rgba(245,200,66,.12);color:var(--yellow)}
+.badge-tableau{background:rgba(91,156,246,.12);color:var(--blue)}
+.badge-looker{background:rgba(52,211,153,.12);color:var(--green)}
+.badge-excel{background:rgba(232,25,108,.12);color:var(--pink)}
+.card-github-icon{color:var(--text2);transition:color .2s;display:flex;align-items:center}
+.project-card:hover .card-github-icon{color:var(--pink)}
 
-/* ── PROJECT CARD ── */
-.project-card {
-  background: var(--charcoal);
-  border: 1px solid var(--border);
-  display: flex; flex-direction: column;
-  transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  overflow: hidden;
-}
-.project-card::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(232,25,108,0.03) 0%, transparent 60%);
-  pointer-events: none;
-  opacity: 0; transition: opacity 0.22s;
-}
-.project-card:hover {
-  border-color: rgba(232,25,108,0.45);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(232,25,108,0.1);
-}
-.project-card:hover::after { opacity: 1; }
+.card-title{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:400;color:var(--text);line-height:1.3;transition:color .2s}
+.project-card:hover .card-title{color:var(--pink-light)}
+.card-insight{font-size:.78rem;color:var(--text2);line-height:1.65;flex:1}
 
-/* Card Thumbnail */
-.card-thumb {
-  width: 100%; height: 160px;
-  background: var(--surface2);
-  overflow: hidden; position: relative;
-  display: flex; align-items: center; justify-content: center;
-  border-bottom: 1px solid var(--border);
-}
-.card-thumb svg {
-  width: 100%; height: 100%;
-  position: absolute; inset: 0;
-}
-.card-thumb-label {
-  position: relative; z-index: 1;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem; letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.3);
-  text-transform: uppercase;
-}
+.card-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
+.card-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;padding:2px 7px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--text2)}
 
-/* Card Body */
-.card-body {
-  padding: 1.25rem 1.4rem;
-  flex: 1; display: flex; flex-direction: column; gap: 0.6rem;
-}
-.card-top-meta {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 0.1rem;
-}
-.card-cat-badge {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem; letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 2px 7px; border-radius: 2px;
-  font-weight: 500;
-}
-.badge-python { background: rgba(245,200,66,0.12); color: var(--yellow); }
-.badge-tableau { background: rgba(91,156,246,0.12); color: var(--blue); }
-.badge-looker { background: rgba(52,211,153,0.12); color: var(--green); }
-.badge-excel { background: rgba(232,25,108,0.12); color: var(--pink); }
+.card-footer{padding:.8rem 1.4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-footer-label{font-size:.68rem;color:var(--text2);letter-spacing:.05em;display:flex;align-items:center;gap:.4rem}
+.card-footer-label::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%}
+.footer-python::before{background:var(--yellow)}
+.footer-tableau::before{background:var(--blue)}
+.footer-looker::before{background:var(--green)}
+.footer-excel::before{background:var(--pink)}
+.card-arrow{font-size:.7rem;color:var(--text2);transition:color .2s,transform .2s}
+.project-card:hover .card-arrow{color:var(--pink);transform:translateX(3px)}
 
-.card-github-icon {
-  color: var(--text2); font-size: 0.9rem; transition: color 0.2s;
-  display: flex; align-items: center;
-}
-.project-card:hover .card-github-icon { color: var(--pink); }
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--text2);font-size:.88rem;display:none}
+.empty-state.visible{display:block}
 
-.card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.18rem; font-weight: 400;
-  color: var(--text); line-height: 1.3;
-  transition: color 0.2s;
-}
-.project-card:hover .card-title { color: var(--pink-light); }
+footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-left{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;color:var(--text2)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.7rem;color:var(--text2);text-decoration:none;letter-spacing:.1em;transition:color .2s}
+.footer-links a:hover{color:var(--pink)}
 
-.card-insight {
-  font-size: 0.78rem; color: var(--text2);
-  line-height: 1.65; flex: 1;
-}
+/* SVG GITHUB ICON REUSE */
+.gh-svg{width:14px;height:14px;fill:currentColor}
 
-.card-tags {
-  display: flex; flex-wrap: wrap; gap: 0.4rem;
-  margin-top: 0.4rem;
-}
-.card-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem; letter-spacing: 0.1em;
-  padding: 2px 7px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: var(--text2);
-  border-radius: 2px;
-}
-
-.card-footer {
-  padding: 0.8rem 1.4rem;
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.card-footer-label {
-  font-size: 0.68rem; color: var(--text2);
-  letter-spacing: 0.05em;
-  display: flex; align-items: center; gap: 0.4rem;
-}
-.card-footer-label::before {
-  content: ''; display: inline-block;
-  width: 5px; height: 5px; border-radius: 50%;
-}
-.footer-python::before { background: var(--yellow); }
-.footer-tableau::before { background: var(--blue); }
-.footer-looker::before { background: var(--green); }
-.footer-excel::before { background: var(--pink); }
-
-.card-arrow {
-  font-size: 0.7rem; color: var(--text2);
-  transition: color 0.2s, transform 0.2s;
-}
-.project-card:hover .card-arrow { color: var(--pink); transform: translateX(3px); }
-
-/* ── HIDDEN STATE ── */
-.category-section { transition: opacity 0.3s, transform 0.3s; }
-.category-section.hidden { display: none; }
-
-/* ── EMPTY STATE ── */
-.empty-state {
-  text-align: center; padding: 4rem 2rem;
-  color: var(--text2);
-  font-size: 0.88rem;
-  display: none;
-}
-.empty-state.visible { display: block; }
-
-/* ── BACK LINK ── */
-.back-link {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.72rem; letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text2); text-decoration: none;
-  transition: color 0.2s;
-  margin-bottom: 1.5rem;
-}
-.back-link:hover { color: var(--pink); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .page-header, .filter-wrap, .projects-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .cards-grid { grid-template-columns: 1fr; }
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .page-header,.filter-wrap,.projects-wrap{padding-left:1.5rem;padding-right:1.5rem}
+  .cards-grid{grid-template-columns:1fr}
+  footer{padding:1.5rem}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="index.html">Somi<span>.</span></a>
+  <a class="nav-logo" href="index.html">Saumya<span>.</span></a>
   <ul class="nav-links">
     <li><a href="index.html#about">About</a></li>
-    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="index.html#education">Education</a></li>
     <li><a href="index.html#skills">Skills</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-<!-- PAGE HEADER -->
 <header class="page-header">
   <p class="breadcrumb"><a href="index.html">Home</a> / Projects</p>
   <h1 class="page-title">Analytics <em>Showcase</em></h1>
-  <p class="page-subtitle">A curated collection of data projects — each one answering a question, revealing a pattern, or driving a decision.</p>
+  <p class="page-subtitle">A curated collection of data projects — each one answering a real question, revealing a hidden pattern, or driving a business decision.</p>
 </header>
 
-<!-- FILTER BAR -->
 <div class="filter-wrap">
   <button class="filter-btn active" data-filter="all">All Projects</button>
   <button class="filter-btn" data-filter="python">Python</button>
@@ -351,118 +140,83 @@ nav {
   <button class="filter-btn" data-filter="excel">Excel</button>
 </div>
 
-<!-- PROJECTS -->
 <div class="projects-wrap">
 
-  <!-- PYTHON -->
-  <div class="category-section cat-python" data-category="python" id="sec-python">
+  <!-- ══ PYTHON ══ -->
+  <div class="category-section cat-python" data-category="python">
     <div class="category-header">
       <div class="category-dot"></div>
       <span class="category-name">Python</span>
-      <span class="category-desc">EDA · Time Series · Market Analysis</span>
+      <span class="category-desc">EDA · Time Series · Market &amp; Economic Analysis</span>
       <span class="category-count">5 projects</span>
     </div>
     <div class="cards-grid">
 
-      <!-- P1: AI Job Market -->
+      <!-- AI Job Market -->
       <a class="project-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
         <div class="card-thumb">
           <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="360" height="160" fill="#1a1a1a"/>
-            <!-- bar chart bars -->
-            <rect x="30" y="100" width="28" height="45" rx="1" fill="rgba(245,200,66,0.5)"/>
-            <rect x="68" y="75" width="28" height="70" rx="1" fill="rgba(245,200,66,0.6)"/>
-            <rect x="106" y="55" width="28" height="90" rx="1" fill="rgba(245,200,66,0.75)"/>
+            <rect x="30" y="100" width="28" height="45" rx="1" fill="rgba(245,200,66,0.45)"/>
+            <rect x="68" y="78" width="28" height="67" rx="1" fill="rgba(245,200,66,0.58)"/>
+            <rect x="106" y="56" width="28" height="89" rx="1" fill="rgba(245,200,66,0.72)"/>
             <rect x="144" y="40" width="28" height="105" rx="1" fill="rgba(245,200,66,0.85)"/>
-            <rect x="182" y="60" width="28" height="85" rx="1" fill="rgba(245,200,66,0.7)"/>
-            <rect x="220" y="80" width="28" height="65" rx="1" fill="rgba(245,200,66,0.55)"/>
-            <!-- trend line -->
-            <polyline points="44,103 82,78 120,58 158,43 196,63 234,83" fill="none" stroke="rgba(232,25,108,0.8)" stroke-width="1.5" stroke-linecap="round"/>
-            <!-- dots on line -->
-            <circle cx="44" cy="103" r="3" fill="#e8196c"/>
-            <circle cx="82" cy="78" r="3" fill="#e8196c"/>
-            <circle cx="120" cy="58" r="3" fill="#e8196c"/>
-            <circle cx="158" cy="43" r="3" fill="#e8196c"/>
-            <circle cx="196" cy="63" r="3" fill="#e8196c"/>
-            <circle cx="234" cy="83" r="3" fill="#e8196c"/>
-            <!-- labels -->
-            <text x="30" y="152" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.25)" letter-spacing="1">ML  NLP  CV   DL  MLO  DS</text>
-            <!-- grid lines -->
-            <line x1="20" y1="145" x2="290" y2="145" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-            <line x1="20" y1="115" x2="290" y2="115" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-            <line x1="20" y1="85" x2="290" y2="85" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-            <!-- right: stat box -->
-            <rect x="280" y="20" width="70" height="38" rx="2" fill="rgba(245,200,66,0.1)" stroke="rgba(245,200,66,0.2)" stroke-width="0.5"/>
-            <text x="315" y="36" font-family="monospace" font-size="14" fill="#f5c842" text-anchor="middle" font-weight="500">$142K</text>
-            <text x="315" y="51" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">AVG SALARY</text>
+            <rect x="182" y="62" width="28" height="83" rx="1" fill="rgba(245,200,66,0.68)"/>
+            <rect x="220" y="82" width="28" height="63" rx="1" fill="rgba(245,200,66,0.52)"/>
+            <polyline points="44,103 82,81 120,59 158,43 196,65 234,85" fill="none" stroke="rgba(232,25,108,0.85)" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="44" cy="103" r="3" fill="#e8196c"/><circle cx="82" cy="81" r="3" fill="#e8196c"/>
+            <circle cx="120" cy="59" r="3" fill="#e8196c"/><circle cx="158" cy="43" r="3" fill="#e8196c"/>
+            <circle cx="196" cy="65" r="3" fill="#e8196c"/><circle cx="234" cy="85" r="3" fill="#e8196c"/>
+            <text x="30" y="152" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.22)" letter-spacing="2">ML   NLP   CV    DL   MLO   DS</text>
+            <line x1="20" y1="145" x2="290" y2="145" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            <rect x="278" y="18" width="72" height="38" rx="2" fill="rgba(245,200,66,0.1)" stroke="rgba(245,200,66,0.2)" stroke-width="0.5"/>
+            <text x="314" y="34" font-family="monospace" font-size="13" fill="#f5c842" text-anchor="middle" font-weight="500">$142K</text>
+            <text x="314" y="48" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">AVG SALARY</text>
           </svg>
         </div>
         <div class="card-body">
           <div class="card-top-meta">
             <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </span>
+            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
           </div>
           <p class="card-title">AI Job Market Analysis</p>
-          <p class="card-insight">Revealed that ML engineers earn 38% more than average DS roles — mapped across 50+ job titles using salary trend analysis.</p>
-          <div class="card-tags">
-            <span class="card-tag">EDA</span>
-            <span class="card-tag">salary-analysis</span>
-            <span class="card-tag">job-market</span>
-            <span class="card-tag">pandas</span>
-          </div>
+          <p class="card-insight">Revealed ML engineers earn 38% more than avg DS roles — mapped across 50+ job titles using salary trend &amp; demand analysis.</p>
+          <div class="card-tags"><span class="card-tag">EDA</span><span class="card-tag">salary-analysis</span><span class="card-tag">job-market</span><span class="card-tag">pandas</span></div>
         </div>
         <div class="card-footer">
-          <span class="card-footer-label footer-python">Python · EDA</span>
+          <span class="card-footer-label footer-python">Python · Market Analysis</span>
           <span class="card-arrow">→</span>
         </div>
       </a>
 
-      <!-- P2: Trader Performance -->
+      <!-- Trader Performance -->
       <a class="project-card" href="https://github.com/Saumya-Mishra-536/Trader-Performance-vs-Market-Sentiment" target="_blank">
         <div class="card-thumb">
           <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="360" height="160" fill="#1a1a1a"/>
-            <!-- candlestick-style chart -->
-            <line x1="20" y1="145" x2="320" y2="145" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-            <!-- area fill -->
-            <path d="M 30 110 L 70 95 L 110 115 L 150 70 L 190 80 L 230 50 L 270 65 L 290 55 L 290 145 L 30 145 Z" fill="rgba(245,200,66,0.06)"/>
-            <!-- line -->
-            <polyline points="30,110 70,95 110,115 150,70 190,80 230,50 270,65 290,55" fill="none" stroke="#f5c842" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- sentiment line -->
-            <polyline points="30,100 70,105 110,90 150,85 190,95 230,60 270,55 290,50" fill="none" stroke="rgba(232,25,108,0.7)" stroke-width="1" stroke-dasharray="4,2" stroke-linecap="round"/>
-            <!-- dots -->
-            <circle cx="230" cy="50" r="3.5" fill="#f5c842"/>
-            <circle cx="290" cy="55" r="3.5" fill="#f5c842"/>
-            <!-- legend -->
-            <rect x="20" y="12" width="8" height="2" fill="#f5c842"/>
-            <text x="32" y="15" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)">Trader P&L</text>
-            <rect x="90" y="12" width="8" height="2" fill="rgba(232,25,108,0.7)" rx="1"/>
-            <text x="102" y="15" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)">Market Sentiment</text>
-            <!-- vol bars at bottom -->
+            <path d="M 30 110 L 70 95 L 110 115 L 150 70 L 190 80 L 230 50 L 270 65 L 290 55 L 290 145 L 30 145 Z" fill="rgba(245,200,66,0.05)"/>
+            <polyline points="30,110 70,95 110,115 150,70 190,80 230,50 270,65 290,55" fill="none" stroke="#f5c842" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="30,100 70,105 110,90 150,85 190,95 230,60 270,55 290,50" fill="none" stroke="rgba(232,25,108,0.7)" stroke-width="1.2" stroke-dasharray="4,2" stroke-linecap="round"/>
+            <circle cx="230" cy="50" r="3.5" fill="#f5c842"/><circle cx="290" cy="55" r="3.5" fill="#f5c842"/>
+            <rect x="16" y="10" width="70" height="16" rx="1" fill="rgba(245,200,66,0.08)"/>
+            <text x="51" y="21" font-family="monospace" font-size="7" fill="rgba(245,200,66,0.7)" text-anchor="middle" letter-spacing="1">TRADER P&amp;L</text>
+            <rect x="92" y="10" width="85" height="16" rx="1" fill="rgba(232,25,108,0.08)"/>
+            <text x="134" y="21" font-family="monospace" font-size="7" fill="rgba(232,25,108,0.7)" text-anchor="middle" letter-spacing="1">MKT SENTIMENT</text>
             <rect x="30" y="132" width="10" height="8" rx="1" fill="rgba(245,200,66,0.2)"/>
-            <rect x="68" y="128" width="10" height="12" rx="1" fill="rgba(245,200,66,0.25)"/>
+            <rect x="68" y="128" width="10" height="12" rx="1" fill="rgba(245,200,66,0.28)"/>
             <rect x="106" y="135" width="10" height="5" rx="1" fill="rgba(245,200,66,0.15)"/>
-            <rect x="144" y="124" width="10" height="16" rx="1" fill="rgba(245,200,66,0.35)"/>
-            <rect x="182" y="130" width="10" height="10" rx="1" fill="rgba(245,200,66,0.2)"/>
+            <rect x="144" y="124" width="10" height="16" rx="1" fill="rgba(245,200,66,0.38)"/>
+            <rect x="182" y="130" width="10" height="10" rx="1" fill="rgba(245,200,66,0.22)"/>
           </svg>
         </div>
         <div class="card-body">
           <div class="card-top-meta">
             <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </span>
+            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
           </div>
           <p class="card-title">Trader Performance vs Market Sentiment</p>
-          <p class="card-insight">Uncovered a 0.73 correlation between retail trader losses and negative sentiment spikes — timing beats analysis in volatile markets.</p>
-          <div class="card-tags">
-            <span class="card-tag">finance</span>
-            <span class="card-tag">sentiment-analysis</span>
-            <span class="card-tag">time-series</span>
-            <span class="card-tag">correlation</span>
-          </div>
+          <p class="card-insight">Uncovered 0.73 correlation between retail trader losses and negative sentiment spikes — timing beats analysis in volatile markets.</p>
+          <div class="card-tags"><span class="card-tag">finance</span><span class="card-tag">sentiment-analysis</span><span class="card-tag">time-series</span><span class="card-tag">correlation</span></div>
         </div>
         <div class="card-footer">
           <span class="card-footer-label footer-python">Python · Finance</span>
@@ -470,113 +224,70 @@ nav {
         </div>
       </a>
 
-      <!-- P3: Covid Impact -->
+      <!-- Covid Impact -->
       <a class="project-card" href="https://github.com/Saumya-Mishra-536/Covid-Impact-Analysis" target="_blank">
         <div class="card-thumb">
           <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="360" height="160" fill="#1a1a1a"/>
-            <!-- world map dots (simplified) -->
-            <g opacity="0.2">
-              <rect x="50" y="60" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="80" y="55" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="110" y="65" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="145" y="50" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="175" y="45" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="210" y="60" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="250" y="55" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="280" y="65" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="60" y="80" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="95" y="85" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="130" y="75" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="165" y="80" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="200" y="75" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="235" y="80" width="4" height="4" rx="1" fill="#f5c842"/>
-              <rect x="265" y="85" width="4" height="4" rx="1" fill="#f5c842"/>
-            </g>
-            <!-- impact wave - main -->
-            <path d="M 20 120 Q 60 80 100 110 Q 140 140 180 70 Q 220 20 260 60 Q 290 85 320 55" fill="none" stroke="rgba(232,25,108,0.9)" stroke-width="2" stroke-linecap="round"/>
-            <!-- impact wave - shadow -->
             <path d="M 20 120 Q 60 80 100 110 Q 140 140 180 70 Q 220 20 260 60 Q 290 85 320 55 L 320 145 L 20 145 Z" fill="rgba(232,25,108,0.04)"/>
-            <!-- recovery line -->
+            <path d="M 20 120 Q 60 80 100 110 Q 140 140 180 70 Q 220 20 260 60 Q 290 85 320 55" fill="none" stroke="rgba(232,25,108,0.9)" stroke-width="2" stroke-linecap="round"/>
             <path d="M 180 70 Q 220 20 260 60 Q 290 85 320 45" fill="none" stroke="rgba(52,211,153,0.6)" stroke-width="1.5" stroke-dasharray="4,2" stroke-linecap="round"/>
-            <!-- labels -->
-            <rect x="24" y="14" width="60" height="18" rx="2" fill="rgba(232,25,108,0.12)" stroke="rgba(232,25,108,0.2)" stroke-width="0.5"/>
-            <text x="54" y="26" font-family="monospace" font-size="7" fill="rgba(232,25,108,0.9)" text-anchor="middle" letter-spacing="1">IMPACT</text>
-            <rect x="96" y="14" width="68" height="18" rx="2" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.2)" stroke-width="0.5"/>
-            <text x="130" y="26" font-family="monospace" font-size="7" fill="rgba(52,211,153,0.8)" text-anchor="middle" letter-spacing="1">RECOVERY</text>
+            <rect x="22" y="12" width="65" height="18" rx="2" fill="rgba(232,25,108,0.12)" stroke="rgba(232,25,108,0.2)" stroke-width="0.5"/>
+            <text x="54" y="24" font-family="monospace" font-size="7" fill="rgba(232,25,108,0.9)" text-anchor="middle" letter-spacing="1">IMPACT</text>
+            <rect x="100" y="12" width="72" height="18" rx="2" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.2)" stroke-width="0.5"/>
+            <text x="136" y="24" font-family="monospace" font-size="7" fill="rgba(52,211,153,0.8)" text-anchor="middle" letter-spacing="1">RECOVERY</text>
+            <text x="20" y="155" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.18)" letter-spacing="2">43 INDIAN STATES ANALYZED</text>
           </svg>
         </div>
         <div class="card-body">
           <div class="card-top-meta">
             <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </span>
+            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
           </div>
-          <p class="card-title">Covid Impact Analysis</p>
-          <p class="card-insight">Quantified a 34% GDP contraction across 12 sectors in 2020, with hospitality taking 4x longer to recover than tech.</p>
-          <div class="card-tags">
-            <span class="card-tag">economic-analysis</span>
-            <span class="card-tag">time-series</span>
-            <span class="card-tag">pandemic</span>
-            <span class="card-tag">EDA</span>
-          </div>
+          <p class="card-title">Covid-19 India Impact Analysis</p>
+          <p class="card-insight">End-to-end pipeline using Pandas, NumPy &amp; Matplotlib across 43 Indian states — statistical modeling + 10+ visualizations on pandemic trends.</p>
+          <div class="card-tags"><span class="card-tag">EDA</span><span class="card-tag">time-series</span><span class="card-tag">healthcare</span><span class="card-tag">statistical-modeling</span></div>
         </div>
         <div class="card-footer">
-          <span class="card-footer-label footer-python">Python · Economics</span>
+          <span class="card-footer-label footer-python">Python · Healthcare</span>
           <span class="card-arrow">→</span>
         </div>
       </a>
 
-      <!-- P4: InsightMart -->
+      <!-- InsightMart -->
       <a class="project-card" href="https://github.com/Saumya-Mishra-536/InsightMart" target="_blank">
         <div class="card-thumb">
           <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="360" height="160" fill="#1a1a1a"/>
-            <!-- dashboard mockup -->
-            <rect x="20" y="20" width="90" height="50" rx="3" fill="rgba(245,200,66,0.08)" stroke="rgba(245,200,66,0.15)" stroke-width="0.5"/>
-            <text x="65" y="42" font-family="monospace" font-size="14" fill="#f5c842" text-anchor="middle" font-weight="500">₹2.4M</text>
-            <text x="65" y="55" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">REVENUE</text>
-            <text x="65" y="64" font-family="monospace" font-size="6" fill="rgba(52,211,153,0.7)" text-anchor="middle">↑ +18%</text>
-
-            <rect x="120" y="20" width="90" height="50" rx="3" fill="rgba(232,25,108,0.08)" stroke="rgba(232,25,108,0.15)" stroke-width="0.5"/>
-            <text x="165" y="42" font-family="monospace" font-size="14" fill="#e8196c" text-anchor="middle" font-weight="500">8,420</text>
-            <text x="165" y="55" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">ORDERS</text>
-            <text x="165" y="64" font-family="monospace" font-size="6" fill="rgba(52,211,153,0.7)" text-anchor="middle">↑ +12%</text>
-
-            <!-- bar chart -->
-            <rect x="20" y="82" width="190" height="62" rx="3" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-            <rect x="30" y="115" width="18" height="22" rx="1" fill="rgba(245,200,66,0.4)"/>
-            <rect x="55" y="105" width="18" height="32" rx="1" fill="rgba(245,200,66,0.55)"/>
-            <rect x="80" y="95" width="18" height="42" rx="1" fill="rgba(245,200,66,0.65)"/>
-            <rect x="105" y="100" width="18" height="37" rx="1" fill="rgba(245,200,66,0.6)"/>
-            <rect x="130" y="88" width="18" height="49" rx="1" fill="rgba(245,200,66,0.75)"/>
-            <rect x="155" y="93" width="18" height="44" rx="1" fill="rgba(245,200,66,0.7)"/>
-            <text x="30" y="91" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.3)" letter-spacing="1">CATEGORY SALES</text>
-
-            <!-- donut -->
-            <circle cx="280" cy="85" r="45" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="22"/>
-            <circle cx="280" cy="85" r="45" fill="none" stroke="rgba(245,200,66,0.5)" stroke-width="22" stroke-dasharray="85 197" stroke-dashoffset="-10"/>
-            <circle cx="280" cy="85" r="45" fill="none" stroke="rgba(232,25,108,0.6)" stroke-width="22" stroke-dasharray="60 222" stroke-dashoffset="-95"/>
-            <circle cx="280" cy="85" r="45" fill="none" stroke="rgba(91,156,246,0.5)" stroke-width="22" stroke-dasharray="52 230" stroke-dashoffset="-155"/>
-            <text x="280" y="89" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">MIX</text>
+            <rect x="20" y="15" width="72" height="42" rx="2" fill="rgba(245,200,66,0.08)" stroke="rgba(245,200,66,0.18)" stroke-width="0.5"/>
+            <text x="56" y="34" font-family="monospace" font-size="13" fill="#f5c842" text-anchor="middle" font-weight="500">₹2.4M</text>
+            <text x="56" y="49" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">REVENUE</text>
+            <rect x="100" y="15" width="72" height="42" rx="2" fill="rgba(232,25,108,0.08)" stroke="rgba(232,25,108,0.18)" stroke-width="0.5"/>
+            <text x="136" y="34" font-family="monospace" font-size="13" fill="#e8196c" text-anchor="middle" font-weight="500">8,420</text>
+            <text x="136" y="49" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">ORDERS</text>
+            <rect x="20" y="68" width="190" height="78" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            <rect x="30" y="115" width="18" height="24" rx="1" fill="rgba(245,200,66,0.4)"/>
+            <rect x="55" y="105" width="18" height="34" rx="1" fill="rgba(245,200,66,0.55)"/>
+            <rect x="80" y="94" width="18" height="45" rx="1" fill="rgba(245,200,66,0.68)"/>
+            <rect x="105" y="100" width="18" height="39" rx="1" fill="rgba(245,200,66,0.6)"/>
+            <rect x="130" y="86" width="18" height="53" rx="1" fill="rgba(245,200,66,0.78)"/>
+            <rect x="155" y="92" width="18" height="47" rx="1" fill="rgba(245,200,66,0.7)"/>
+            <text x="30" y="80" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1">CATEGORY SALES</text>
+            <circle cx="285" cy="98" r="42" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="22"/>
+            <circle cx="285" cy="98" r="42" fill="none" stroke="rgba(245,200,66,0.55)" stroke-width="22" stroke-dasharray="85 197" stroke-dashoffset="-10"/>
+            <circle cx="285" cy="98" r="42" fill="none" stroke="rgba(232,25,108,0.6)" stroke-width="22" stroke-dasharray="60 222" stroke-dashoffset="-95"/>
+            <circle cx="285" cy="98" r="42" fill="none" stroke="rgba(91,156,246,0.5)" stroke-width="22" stroke-dasharray="52 230" stroke-dashoffset="-155"/>
+            <text x="285" y="102" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle">MIX</text>
           </svg>
         </div>
         <div class="card-body">
           <div class="card-top-meta">
             <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </span>
+            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
           </div>
           <p class="card-title">InsightMart</p>
-          <p class="card-insight">Identified top 3 revenue-driving categories for a retail chain — Electronics and FMCG alone drive 62% of quarterly profits.</p>
-          <div class="card-tags">
-            <span class="card-tag">retail-analytics</span>
-            <span class="card-tag">EDA</span>
-            <span class="card-tag">revenue-analysis</span>
-            <span class="card-tag">forecasting</span>
-          </div>
+          <p class="card-insight">Identified top 3 revenue-driving categories — Electronics &amp; FMCG drive 62% of quarterly profits in this retail analytics deep-dive.</p>
+          <div class="card-tags"><span class="card-tag">retail-analytics</span><span class="card-tag">EDA</span><span class="card-tag">revenue-analysis</span><span class="card-tag">forecasting</span></div>
         </div>
         <div class="card-footer">
           <span class="card-footer-label footer-python">Python · Retail</span>
@@ -584,45 +295,31 @@ nav {
         </div>
       </a>
 
-      <!-- P5: Economic Shock -->
+      <!-- Economic Shock -->
       <a class="project-card" href="https://github.com/Saumya-Mishra-536/Economic-Shock-Impact-Analyzer" target="_blank">
         <div class="card-thumb">
           <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="360" height="160" fill="#1a1a1a"/>
-            <!-- shock wave visualization -->
-            <line x1="175" y1="10" x2="175" y2="150" stroke="rgba(232,25,108,0.3)" stroke-width="0.5" stroke-dasharray="3,3"/>
-            <text x="180" y="22" font-family="monospace" font-size="7" fill="rgba(232,25,108,0.6)" letter-spacing="1">SHOCK</text>
-            <!-- before shock - stable line -->
-            <path d="M 20 80 Q 60 78 90 82 Q 120 84 155 80" fill="none" stroke="rgba(245,200,66,0.7)" stroke-width="1.5" stroke-linecap="round"/>
-            <!-- after shock - volatile recovery -->
-            <path d="M 175 80 Q 185 40 200 100 Q 215 140 235 60 Q 250 25 270 70 Q 285 95 310 75" fill="none" stroke="rgba(245,200,66,0.7)" stroke-width="1.5" stroke-linecap="round"/>
-            <!-- fill under -->
-            <path d="M 175 80 Q 185 40 200 100 Q 215 140 235 60 Q 250 25 270 70 Q 285 95 310 75 L 310 145 L 175 145 Z" fill="rgba(232,25,108,0.04)"/>
-            <!-- before label -->
-            <rect x="30" y="55" width="55" height="16" rx="2" fill="rgba(52,211,153,0.1)"/>
-            <text x="57" y="65" font-family="monospace" font-size="6" fill="rgba(52,211,153,0.8)" text-anchor="middle" letter-spacing="1">PRE-SHOCK</text>
-            <!-- after label -->
-            <rect x="220" y="55" width="55" height="16" rx="2" fill="rgba(232,25,108,0.12)"/>
-            <text x="247" y="65" font-family="monospace" font-size="6" fill="rgba(232,25,108,0.9)" text-anchor="middle" letter-spacing="1">POST-SHOCK</text>
-            <!-- GDP markers -->
-            <text x="20" y="145" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.2)" letter-spacing="1">GDP IMPACT OVER TIME →</text>
+            <line x1="175" y1="8" x2="175" y2="148" stroke="rgba(232,25,108,0.28)" stroke-width="0.8" stroke-dasharray="3,3"/>
+            <text x="179" y="20" font-family="monospace" font-size="6.5" fill="rgba(232,25,108,0.6)" letter-spacing="1">SHOCK</text>
+            <path d="M 20 82 Q 60 80 90 84 Q 120 86 155 82" fill="none" stroke="rgba(245,200,66,0.7)" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M 175 82 Q 185 42 200 102 Q 215 142 235 62 Q 250 22 270 68 Q 285 92 310 72" fill="none" stroke="rgba(245,200,66,0.7)" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M 175 82 Q 185 42 200 102 Q 215 142 235 62 Q 250 22 270 68 Q 285 92 310 72 L 310 145 L 175 145 Z" fill="rgba(232,25,108,0.04)"/>
+            <rect x="28" y="52" width="60" height="17" rx="2" fill="rgba(52,211,153,0.1)"/>
+            <text x="58" y="63" font-family="monospace" font-size="6.5" fill="rgba(52,211,153,0.8)" text-anchor="middle" letter-spacing="1">PRE-SHOCK</text>
+            <rect x="218" y="52" width="60" height="17" rx="2" fill="rgba(232,25,108,0.1)"/>
+            <text x="248" y="63" font-family="monospace" font-size="6.5" fill="rgba(232,25,108,0.9)" text-anchor="middle" letter-spacing="1">POST-SHOCK</text>
+            <text x="18" y="155" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.18)" letter-spacing="2">GDP · EMPLOYMENT · CONSUMER CONFIDENCE</text>
           </svg>
         </div>
         <div class="card-body">
           <div class="card-top-meta">
             <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </span>
+            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
           </div>
           <p class="card-title">Economic Shock Impact Analyzer</p>
-          <p class="card-insight">Modeled how external economic shocks (rate hikes, oil crises) ripple across GDP, employment, and consumer confidence over 6–18 months.</p>
-          <div class="card-tags">
-            <span class="card-tag">macroeconomics</span>
-            <span class="card-tag">shock-analysis</span>
-            <span class="card-tag">forecasting</span>
-            <span class="card-tag">time-series</span>
-          </div>
+          <p class="card-insight">ML + Monte Carlo simulation system modeling how commodity shocks ripple across GDP, employment &amp; consumer confidence over 6–18 months.</p>
+          <div class="card-tags"><span class="card-tag">macroeconomics</span><span class="card-tag">monte-carlo</span><span class="card-tag">streamlit</span><span class="card-tag">forecasting</span></div>
         </div>
         <div class="card-footer">
           <span class="card-footer-label footer-python">Python · Economics</span>
@@ -633,199 +330,152 @@ nav {
     </div>
   </div>
 
-  <!-- TABLEAU -->
-  <div class="category-section cat-tableau" data-category="tableau" id="sec-tableau">
+  <!-- ══ TABLEAU ══ -->
+  <div class="category-section cat-tableau" data-category="tableau">
     <div class="category-header">
       <div class="category-dot"></div>
       <span class="category-name">Tableau</span>
-      <span class="category-desc">Visual Storytelling · Business Insights</span>
+      <span class="category-desc">Visual Storytelling · Business Insights · Interactive Dashboards</span>
       <span class="category-count">1 project</span>
     </div>
     <div class="cards-grid">
-
-      <!-- T1: AI Job Market Tableau -->
       <a class="project-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
         <div class="card-thumb">
           <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="360" height="160" fill="#1a1a1a"/>
-            <!-- Tableau-style viz: treemap feel -->
-            <rect x="20" y="20" width="140" height="70" rx="2" fill="rgba(91,156,246,0.3)" stroke="rgba(91,156,246,0.2)" stroke-width="0.5"/>
-            <text x="90" y="52" font-family="monospace" font-size="9" fill="rgba(91,156,246,0.9)" text-anchor="middle">ML Engineer</text>
-            <text x="90" y="65" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">$142K avg</text>
-
-            <rect x="168" y="20" width="80" height="70" rx="2" fill="rgba(91,156,246,0.2)" stroke="rgba(91,156,246,0.15)" stroke-width="0.5"/>
-            <text x="208" y="52" font-family="monospace" font-size="8" fill="rgba(91,156,246,0.8)" text-anchor="middle">Data Sci</text>
-            <text x="208" y="63" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)" text-anchor="middle">$118K</text>
-
-            <rect x="256" y="20" width="84" height="70" rx="2" fill="rgba(91,156,246,0.15)" stroke="rgba(91,156,246,0.1)" stroke-width="0.5"/>
-            <text x="298" y="52" font-family="monospace" font-size="8" fill="rgba(91,156,246,0.7)" text-anchor="middle">Analyst</text>
-            <text x="298" y="63" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)" text-anchor="middle">$89K</text>
-
-            <!-- bar chart bottom -->
-            <rect x="20" y="100" width="320" height="45" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-            <rect x="28" y="118" width="60" height="20" rx="1" fill="rgba(91,156,246,0.5)"/>
-            <rect x="96" y="110" width="60" height="28" rx="1" fill="rgba(91,156,246,0.65)"/>
-            <rect x="164" y="105" width="60" height="33" rx="1" fill="rgba(91,156,246,0.75)"/>
-            <rect x="232" y="113" width="60" height="25" rx="1" fill="rgba(91,156,246,0.55)"/>
-            <text x="28" y="108" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1">DEMAND BY ROLE</text>
+            <rect x="20" y="18" width="145" height="72" rx="2" fill="rgba(91,156,246,0.28)" stroke="rgba(91,156,246,0.2)" stroke-width="0.5"/>
+            <text x="92" y="52" font-family="monospace" font-size="9" fill="rgba(91,156,246,0.9)" text-anchor="middle">ML Engineer</text>
+            <text x="92" y="66" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.45)" text-anchor="middle">$142K avg</text>
+            <rect x="172" y="18" width="82" height="72" rx="2" fill="rgba(91,156,246,0.18)" stroke="rgba(91,156,246,0.15)" stroke-width="0.5"/>
+            <text x="213" y="52" font-family="monospace" font-size="8" fill="rgba(91,156,246,0.8)" text-anchor="middle">Data Sci</text>
+            <text x="213" y="65" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)" text-anchor="middle">$118K</text>
+            <rect x="260" y="18" width="80" height="72" rx="2" fill="rgba(91,156,246,0.12)" stroke="rgba(91,156,246,0.1)" stroke-width="0.5"/>
+            <text x="300" y="52" font-family="monospace" font-size="8" fill="rgba(91,156,246,0.65)" text-anchor="middle">Analyst</text>
+            <text x="300" y="65" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.35)" text-anchor="middle">$89K</text>
+            <rect x="20" y="100" width="320" height="46" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+            <rect x="30" y="118" width="62" height="20" rx="1" fill="rgba(91,156,246,0.45)"/>
+            <rect x="98" y="109" width="62" height="29" rx="1" fill="rgba(91,156,246,0.6)"/>
+            <rect x="166" y="104" width="62" height="34" rx="1" fill="rgba(91,156,246,0.72)"/>
+            <rect x="234" y="111" width="62" height="27" rx="1" fill="rgba(91,156,246,0.52)"/>
+            <text x="30" y="109" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1">DEMAND BY ROLE</text>
           </svg>
         </div>
         <div class="card-body">
           <div class="card-top-meta">
             <span class="card-cat-badge badge-tableau">Tableau</span>
-            <span class="card-github-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </span>
+            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
           </div>
           <p class="card-title">AI Job Market Dashboard</p>
-          <p class="card-insight">Interactive Tableau story mapping salary bands, hiring surges, and skill demand across 10 AI specializations in 2024.</p>
-          <div class="card-tags">
-            <span class="card-tag">dashboard</span>
-            <span class="card-tag">storytelling</span>
-            <span class="card-tag">job-market</span>
-            <span class="card-tag">visual-analytics</span>
-          </div>
+          <p class="card-insight">Interactive Tableau story mapping salary bands, hiring surges, and skill demand across 10 AI specializations — built for executive-level storytelling.</p>
+          <div class="card-tags"><span class="card-tag">dashboard</span><span class="card-tag">storytelling</span><span class="card-tag">job-market</span><span class="card-tag">visual-analytics</span></div>
         </div>
         <div class="card-footer">
           <span class="card-footer-label footer-tableau">Tableau · Storytelling</span>
           <span class="card-arrow">→</span>
         </div>
       </a>
-
     </div>
   </div>
 
-  <!-- LOOKER STUDIO -->
-  <div class="category-section cat-looker" data-category="looker" id="sec-looker">
+  <!-- ══ LOOKER STUDIO ══ -->
+  <div class="category-section cat-looker" data-category="looker">
     <div class="category-header">
       <div class="category-dot"></div>
       <span class="category-name">Looker Studio</span>
-      <span class="category-desc">Interactive Dashboards · KPI Tracking</span>
+      <span class="category-desc">Interactive Dashboards · KPI Tracking · Reporting</span>
       <span class="category-count">1 project</span>
     </div>
     <div class="cards-grid">
-
-      <!-- L1: Blinkit -->
       <a class="project-card" href="https://github.com/Saumya-Mishra-536" target="_blank">
         <div class="card-thumb">
           <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="360" height="160" fill="#1a1a1a"/>
-            <!-- KPI tiles -->
-            <rect x="20" y="15" width="72" height="42" rx="3" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.2)" stroke-width="0.5"/>
-            <text x="56" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">98.2%</text>
-            <text x="56" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">DELIVERY RATE</text>
-
-            <rect x="100" y="15" width="72" height="42" rx="3" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-            <text x="136" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">11.4m</text>
-            <text x="136" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">AVG DELIVERY</text>
-
-            <rect x="180" y="15" width="72" height="42" rx="3" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.12)" stroke-width="0.5"/>
-            <text x="216" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">4.8★</text>
-            <text x="216" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">RATING</text>
-
-            <!-- Line chart -->
-            <rect x="20" y="68" width="232" height="75" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-            <text x="28" y="80" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1">ORDERS OVER TIME</text>
-            <polyline points="30,130 60,120 90,110 120,105 150,90 180,85 210,75 230,70" fill="none" stroke="rgba(34,197,94,0.8)" stroke-width="1.5" stroke-linecap="round" transform="translate(0,8)"/>
-            <path d="M 30 130 L 60 120 L 90 110 L 120 105 L 150 90 L 180 85 L 210 75 L 230 70 L 230 138 L 30 138 Z" fill="rgba(34,197,94,0.05)" transform="translate(0,8)"/>
-
-            <!-- Category bars right -->
-            <rect x="265" y="68" width="75" height="75" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-            <text x="273" y="80" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.25)" letter-spacing="1">TOP CATS</text>
-            <rect x="273" y="86" width="40" height="7" rx="1" fill="rgba(34,197,94,0.6)"/>
-            <text x="317" y="93" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">40%</text>
-            <rect x="273" y="100" width="30" height="7" rx="1" fill="rgba(34,197,94,0.45)"/>
-            <text x="307" y="107" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">30%</text>
-            <rect x="273" y="114" width="20" height="7" rx="1" fill="rgba(34,197,94,0.3)"/>
-            <text x="297" y="121" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">20%</text>
-            <rect x="273" y="128" width="10" height="7" rx="1" fill="rgba(34,197,94,0.2)"/>
-            <text x="287" y="135" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">10%</text>
+            <rect x="20" y="14" width="74" height="42" rx="3" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/>
+            <text x="57" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">98.2%</text>
+            <text x="57" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">DELIVERY RATE</text>
+            <rect x="102" y="14" width="74" height="42" rx="3" fill="rgba(34,197,94,0.07)" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
+            <text x="139" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">11.4m</text>
+            <text x="139" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">AVG DELIVERY</text>
+            <rect x="184" y="14" width="74" height="42" rx="3" fill="rgba(34,197,94,0.05)" stroke="rgba(34,197,94,0.12)" stroke-width="0.5"/>
+            <text x="221" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">4.8★</text>
+            <text x="221" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">RATING</text>
+            <rect x="20" y="67" width="238" height="78" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            <text x="28" y="79" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1">ORDERS OVER TIME</text>
+            <path d="M 30 138 L 60 128 L 90 118 L 120 113 L 150 98 L 180 93 L 210 83 L 238 78 L 238 140 L 30 140 Z" fill="rgba(34,197,94,0.05)"/>
+            <polyline points="30,138 60,128 90,118 120,113 150,98 180,93 210,83 238,78" fill="none" stroke="rgba(34,197,94,0.8)" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="270" y="67" width="74" height="78" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            <text x="277" y="80" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.25)" letter-spacing="1">TOP CATS</text>
+            <rect x="277" y="86" width="42" height="7" rx="1" fill="rgba(34,197,94,0.6)"/><text x="323" y="93" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">40%</text>
+            <rect x="277" y="100" width="32" height="7" rx="1" fill="rgba(34,197,94,0.45)"/><text x="313" y="107" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">30%</text>
+            <rect x="277" y="114" width="22" height="7" rx="1" fill="rgba(34,197,94,0.3)"/><text x="303" y="121" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">20%</text>
+            <rect x="277" y="128" width="12" height="7" rx="1" fill="rgba(34,197,94,0.18)"/><text x="293" y="135" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">10%</text>
           </svg>
         </div>
         <div class="card-body">
           <div class="card-top-meta">
             <span class="card-cat-badge badge-looker">Looker Studio</span>
-            <span class="card-github-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </span>
+            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
           </div>
           <p class="card-title">Blinkit Analytics Center</p>
-          <p class="card-insight">Live operations dashboard tracking delivery SLAs, top-selling categories, and peak-hour demand — revealing that 60% of orders spike in a 3-hour window.</p>
-          <div class="card-tags">
-            <span class="card-tag">dashboard</span>
-            <span class="card-tag">KPI-tracking</span>
-            <span class="card-tag">q-commerce</span>
-            <span class="card-tag">operations</span>
-          </div>
+          <p class="card-insight">Built dashboards &amp; KPIs on a 5000+ row dataset — delivery SLAs, category demand, inventory &amp; feedback analysis. 60% of orders spike in a 3-hour window.</p>
+          <div class="card-tags"><span class="card-tag">dashboard</span><span class="card-tag">KPI-tracking</span><span class="card-tag">q-commerce</span><span class="card-tag">operations</span></div>
         </div>
         <div class="card-footer">
-          <span class="card-footer-label footer-looker">Looker Studio · Ops</span>
+          <span class="card-footer-label footer-looker">Looker Studio · Operations</span>
           <span class="card-arrow">→</span>
         </div>
       </a>
-
     </div>
   </div>
 
-  <!-- EXCEL -->
-  <div class="category-section cat-excel" data-category="excel" id="sec-excel">
+  <!-- ══ EXCEL ══ -->
+  <div class="category-section cat-excel" data-category="excel">
     <div class="category-header">
       <div class="category-dot"></div>
       <span class="category-name">Excel</span>
-      <span class="category-desc">Financial Models · Power Query · Dashboards</span>
+      <span class="category-desc">Power Query · Financial Models · Dashboards</span>
       <span class="category-count">Coming soon</span>
     </div>
     <div class="cards-grid">
-      <!-- Placeholder card -->
-      <div class="project-card" style="cursor:default; opacity:0.5; pointer-events:none;">
-        <div class="card-thumb" style="min-height:120px; display:flex; align-items:center; justify-content:center;">
-          <span style="font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; color:rgba(255,255,255,0.2);">COMING SOON</span>
+      <div class="project-card" style="opacity:.4;pointer-events:none;cursor:default">
+        <div class="card-thumb" style="min-height:120px;display:flex;align-items:center;justify-content:center">
+          <span style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:rgba(255,255,255,0.2)">COMING SOON</span>
         </div>
         <div class="card-body">
-          <p class="card-title" style="opacity:0.4;">Excel Project</p>
-          <p class="card-insight" style="opacity:0.4;">Financial model or dashboard — coming soon.</p>
+          <p class="card-title" style="opacity:.5">Excel Project</p>
+          <p class="card-insight" style="opacity:.5">Financial model or analytical dashboard — coming soon.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="empty-state" id="emptyState">
-    No projects found for this filter. Check back soon!
-  </div>
-
+  <div class="empty-state" id="emptyState">No projects found for this filter.</div>
 </div>
 
-<!-- FOOTER -->
-<footer style="padding:2rem 4rem; border-top:1px solid rgba(232,25,108,0.12); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
-  <p style="font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.15em; color:#9a8a8a;">© 2025 Somi · Analytics Portfolio</p>
-  <div style="display:flex; gap:2rem;">
-    <a href="index.html" style="font-size:0.7rem; color:#9a8a8a; text-decoration:none; letter-spacing:0.1em; transition:color 0.2s;" onmouseover="this.style.color='#e8196c'" onmouseout="this.style.color='#9a8a8a'">← Back to Home</a>
-    <a href="https://github.com/Saumya-Mishra-536" target="_blank" style="font-size:0.7rem; color:#9a8a8a; text-decoration:none; letter-spacing:0.1em; transition:color 0.2s;" onmouseover="this.style.color='#e8196c'" onmouseout="this.style.color='#9a8a8a'">GitHub</a>
+<footer>
+  <p class="footer-left">© 2025 Saumya Mishra · Analytics Portfolio</p>
+  <div class="footer-links">
+    <a href="index.html">← Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://github.com/Saumya-Mishra-536" target="_blank">GitHub</a>
   </div>
 </footer>
 
 <script>
-const filterBtns = document.querySelectorAll('.filter-btn');
-const sections = document.querySelectorAll('.category-section');
-const empty = document.getElementById('emptyState');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    let anyVisible = false;
-    sections.forEach(sec => {
-      if (filter === 'all' || sec.dataset.category === filter) {
-        sec.classList.remove('hidden');
-        anyVisible = true;
-      } else {
-        sec.classList.add('hidden');
-      }
-    });
-    empty.classList.toggle('visible', !anyVisible);
+const btns=document.querySelectorAll('.filter-btn');
+const secs=document.querySelectorAll('.category-section');
+const empty=document.getElementById('emptyState');
+btns.forEach(btn=>btn.addEventListener('click',()=>{
+  btns.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const f=btn.dataset.filter;
+  let any=false;
+  secs.forEach(s=>{
+    if(f==='all'||s.dataset.category===f){s.classList.remove('hidden');any=true}
+    else s.classList.add('hidden');
   });
-});
+  empty.classList.toggle('visible',!any);
+}));
 </script>
 </body>
 </html>
