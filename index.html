@@ -95,32 +95,67 @@ section{padding:6rem 4rem}
 .metric-bar-bg{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
 .metric-bar-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--pink-light));border-radius:2px}
 
-/* EDUCATION */
+/* EDUCATION TIMELINE */
 .edu-section{background:var(--black2)}
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.edu-card{background:var(--charcoal);border:1px solid var(--border);padding:1.8rem;position:relative;transition:border-color .2s}
-.edu-card:hover{border-color:var(--border2)}
-.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--pink-light))}
-.edu-inst{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:.3rem;line-height:1.3}
-.edu-degree{font-size:.82rem;color:var(--pink-light);margin-bottom:.5rem;font-weight:500}
-.edu-dates{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--text2);margin-bottom:.7rem}
-.edu-details{font-size:.78rem;color:var(--text2);line-height:1.7}
-.edu-activities{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
-.act-chip{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;padding:3px 8px;background:rgba(232,25,108,.07);border:1px solid var(--border);color:var(--text2)}
+.edu-timeline{position:relative;max-width:860px;margin:0 auto;padding:0 0 2rem}
+.edu-timeline-spine{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--pink) 0%,rgba(232,25,108,.15) 100%);transform:translateX(-50%)}
+.edu-timeline-spine::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:12px solid rgba(232,25,108,.3)}
+.edu-item{display:flex;align-items:flex-start;gap:0;margin-bottom:3.5rem;position:relative}
+.edu-item.left{flex-direction:row-reverse}
+.edu-item.right{flex-direction:row}
+.edu-item-content{width:calc(50% - 40px);background:var(--charcoal);border:1px solid var(--border);padding:1.5rem;position:relative;transition:border-color .2s,transform .2s}
+.edu-item-content:hover{border-color:var(--border2);transform:translateY(-2px)}
+.edu-item-content::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--pink-light))}
+.edu-item.left .edu-item-content{margin-right:40px}
+.edu-item.left .edu-item-content::after{content:'';position:absolute;right:-9px;top:20px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:9px solid var(--charcoal)}
+.edu-item.right .edu-item-content{margin-left:40px}
+.edu-item.right .edu-item-content::after{content:'';position:absolute;left:-9px;top:20px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:9px solid var(--charcoal)}
+.edu-node{position:absolute;left:50%;transform:translateX(-50%);top:16px;width:18px;height:18px;border-radius:50%;background:var(--black2);border:2px solid var(--pink);z-index:2;transition:background .2s,box-shadow .2s}
+.edu-item:hover .edu-node{background:var(--pink);box-shadow:0 0 14px rgba(232,25,108,.5)}
+.edu-year{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--pink);text-transform:uppercase;margin-bottom:.5rem}
+.edu-inst{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:.25rem;line-height:1.3}
+.edu-degree{font-size:.8rem;color:var(--pink-light);margin-bottom:.4rem;font-weight:500}
+.edu-score{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--text2);margin-bottom:.5rem}
+.edu-score strong{color:var(--pink)}
+.edu-details{font-size:.76rem;color:var(--text2);line-height:1.65}
+.edu-activities{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
+.act-chip{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.1em;padding:2px 7px;background:rgba(232,25,108,.07);border:1px solid var(--border);color:var(--text2)}
 
-/* EXPERIENCE */
-.exp-list{display:flex;flex-direction:column;gap:1.5rem}
-.exp-card{background:var(--charcoal);border:1px solid var(--border);padding:1.8rem;display:grid;grid-template-columns:auto 1fr;gap:1.2rem;transition:border-color .2s}
-.exp-card:hover{border-color:var(--border2)}
-.exp-dot-col{display:flex;flex-direction:column;align-items:center;padding-top:.3rem}
-.exp-dot{width:10px;height:10px;border-radius:50%;background:var(--pink);flex-shrink:0}
-.exp-line{width:1px;flex:1;background:var(--border);margin-top:4px}
-.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--text);margin-bottom:.2rem}
-.exp-org{font-size:.8rem;color:var(--pink-light);margin-bottom:.3rem;font-weight:500}
-.exp-dates{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--text2);margin-bottom:.7rem}
-.exp-points{list-style:none;display:flex;flex-direction:column;gap:.4rem}
-.exp-points li{font-size:.8rem;color:var(--text2);line-height:1.65;padding-left:1rem;position:relative}
-.exp-points li::before{content:'→';position:absolute;left:0;color:var(--pink);font-size:.7rem}
+/* EXPERIENCE TIMELINE */
+.exp-timeline{position:relative;max-width:860px;margin:0 auto;padding:0 0 2rem}
+.exp-timeline-spine{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--pink) 0%,rgba(232,25,108,.15) 100%);transform:translateX(-50%)}
+.exp-item{display:flex;align-items:flex-start;gap:0;margin-bottom:3rem;position:relative}
+.exp-item.left{flex-direction:row-reverse}
+.exp-item.right{flex-direction:row}
+.exp-item-content{width:calc(50% - 40px);background:var(--charcoal);border:1px solid var(--border);padding:1.5rem;position:relative;transition:border-color .2s,transform .2s}
+.exp-item-content:hover{border-color:var(--border2);transform:translateY(-2px)}
+.exp-item-content::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--pink-light))}
+.exp-item.left .exp-item-content{margin-right:40px}
+.exp-item.left .exp-item-content::after{content:'';position:absolute;right:-9px;top:18px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:9px solid var(--charcoal)}
+.exp-item.right .exp-item-content{margin-left:40px}
+.exp-item.right .exp-item-content::after{content:'';position:absolute;left:-9px;top:18px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid var(--charcoal)}
+.exp-node{position:absolute;left:50%;transform:translateX(-50%);top:14px;width:18px;height:18px;border-radius:50%;background:var(--black);border:2px solid var(--pink);z-index:2;transition:background .2s,box-shadow .2s}
+.exp-item:hover .exp-node{background:var(--pink);box-shadow:0 0 14px rgba(232,25,108,.5)}
+.exp-dates-badge{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;color:var(--pink);text-transform:uppercase;margin-bottom:.45rem;display:block}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:.15rem}
+.exp-org{font-size:.78rem;color:var(--pink-light);margin-bottom:.5rem;font-weight:500}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.exp-points li{font-size:.76rem;color:var(--text2);line-height:1.6;padding-left:.9rem;position:relative}
+.exp-points li::before{content:'→';position:absolute;left:0;color:var(--pink);font-size:.68rem}
+
+@media(max-width:760px){
+  .edu-timeline-spine,.exp-timeline-spine{left:18px}
+  .edu-item,.edu-item.left{flex-direction:row}
+  .edu-item-content,.edu-item.left .edu-item-content{width:calc(100% - 50px);margin-left:50px;margin-right:0}
+  .edu-item.left .edu-item-content::after{display:none}
+  .edu-item-content::after{left:-9px!important;right:auto!important;border-right:9px solid var(--charcoal)!important;border-left:none!important}
+  .edu-node{left:18px}
+  .exp-item,.exp-item.left{flex-direction:row}
+  .exp-item-content,.exp-item.left .exp-item-content{width:calc(100% - 50px);margin-left:50px;margin-right:0}
+  .exp-item.left .exp-item-content::after{display:none}
+  .exp-item-content::after{left:-9px!important;right:auto!important;border-right:9px solid var(--charcoal)!important;border-left:none!important}
+  .exp-node{left:18px}
+}
 
 /* SKILLS */
 .skills-section{background:var(--black2)}
@@ -221,7 +256,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
   <div>
     <p class="hero-eyebrow">Data Analytics Portfolio</p>
     <h1>Hi, I'm<br><em>Saumya</em><br>Mishra</h1>
-    <p class="hero-sub">Data Science undergraduate turning raw datasets into clear, actionable insights — across healthcare, economics, and business domains.</p>
+    <p class="hero-sub">Data Science undergraduate skilled in exploratory data analysis, dashboarding, and deriving business insights from large datasets. Experienced in Python, SQL, and BI tools, with projects focused on market trends, customer behavior, and operational analytics.</p>
     <div class="hero-detail">
       <span>B.Tech CSE · Data Science · Rishihood University</span>
       <span>Minor in Economics &amp; Public Policy</span>
@@ -279,44 +314,73 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 <!-- EDUCATION -->
 <section class="edu-section" id="education">
   <p class="section-eyebrow">Academic Background</p>
-  <h2 class="section-title" style="margin-bottom:2.5rem">Education &amp; <em>Formation</em></h2>
-  <div class="edu-grid">
-    <div class="edu-card">
-      <p class="edu-inst">Rishihood University<br><span style="font-size:.85rem;color:var(--text2)">Newton School of Technology</span></p>
-      <p class="edu-degree">B.Tech — Computer Science &amp; Engineering</p>
-      <p class="edu-dates">Aug 2024 → 2028 · Haryana, India</p>
-      <p class="edu-details"><strong style="color:var(--text3)">Major:</strong> Data Science &nbsp;·&nbsp; <strong style="color:var(--text3)">Minor:</strong> Economics &amp; Public Policy</p>
-      <div class="edu-activities">
-        <span class="act-chip">Robotics Club</span>
-        <span class="act-chip">Music Club</span>
-        <span class="act-chip">Literary Club</span>
-        <span class="act-chip" style="border-color:var(--border2);color:var(--pink)">VP · Public Policy Club</span>
+  <h2 class="section-title" style="margin-bottom:3rem;text-align:center">Education &amp; <em>Formation</em></h2>
+  <div class="edu-timeline">
+    <div class="edu-timeline-spine"></div>
+
+    <!-- Rishihood — RIGHT -->
+    <div class="edu-item right">
+      <div class="edu-node"></div>
+      <div class="edu-item-content">
+        <p class="edu-year">Aug 2024 → 2028</p>
+        <p class="edu-inst">Rishihood University<br><span style="font-size:.82rem;color:var(--text2)">Newton School of Technology, Haryana</span></p>
+        <p class="edu-degree">B.Tech — Computer Science &amp; Engineering</p>
+        <p class="edu-score">CGPA <strong>7.04 / 10</strong></p>
+        <p class="edu-details"><strong style="color:var(--text3)">Major:</strong> Data Science &nbsp;·&nbsp; <strong style="color:var(--text3)">Minor:</strong> Economics &amp; Public Policy</p>
+        <div class="edu-activities">
+          <span class="act-chip">Robotics Club</span>
+          <span class="act-chip">Music Club</span>
+          <span class="act-chip">Literary Club</span>
+          <span class="act-chip" style="border-color:var(--border2);color:var(--pink)">VP · Public Policy Club</span>
+        </div>
       </div>
     </div>
-    <div class="edu-card">
-      <p class="edu-inst">Sri Chaitanya Techno School</p>
-      <p class="edu-degree">Science — Biology &amp; Mathematics</p>
-      <p class="edu-dates">Completed March 2023 · Bengaluru, Karnataka</p>
-      <p class="edu-details" style="margin-top:.5rem">Strong foundation in mathematical reasoning and scientific thinking — the base of my analytical mindset.</p>
-      <div class="edu-activities">
-        <span class="act-chip">SOF IGKO · School &amp; City Rank 1</span>
-        <span class="act-chip">NSO · School &amp; City Rank 1</span>
+
+    <!-- Sri Chaitanya XII — LEFT -->
+    <div class="edu-item left">
+      <div class="edu-node"></div>
+      <div class="edu-item-content">
+        <p class="edu-year">Class XII · 2023</p>
+        <p class="edu-inst">Sri Chaitanya Techno School</p>
+        <p class="edu-degree">Science — Biology &amp; Mathematics · Bengaluru, Karnataka</p>
+        <p class="edu-score">Percentage <strong>74.80%</strong></p>
+        <p class="edu-details">Strong foundation in mathematical reasoning and scientific thinking — the base of my analytical mindset.</p>
+        <div class="edu-activities">
+          <span class="act-chip">SOF IGKO · School &amp; City Rank 1</span>
+          <span class="act-chip">NSO · School &amp; City Rank 1</span>
+        </div>
       </div>
     </div>
+
+    <!-- Vedanta Academy X — RIGHT -->
+    <div class="edu-item right">
+      <div class="edu-node" style="border-color:var(--pink-light)"></div>
+      <div class="edu-item-content">
+        <p class="edu-year">Class X · 2021</p>
+        <p class="edu-inst">Vedanta Academy</p>
+        <p class="edu-degree">Tirupur, Tamil Nadu</p>
+        <p class="edu-score">Percentage <strong style="color:var(--green)">96.00%</strong></p>
+        <p class="edu-details">Exceptional academic foundation with top scores across all subjects — school topper in multiple disciplines.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
   <p class="section-eyebrow">Work &amp; Certifications</p>
-  <h2 class="section-title" style="margin-bottom:2.5rem">Experience &amp; <em>Training</em></h2>
-  <div class="exp-list">
-    <div class="exp-card">
-      <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
-      <div>
+  <h2 class="section-title" style="margin-bottom:3rem;text-align:center">Experience &amp; <em>Training</em></h2>
+  <div class="exp-timeline">
+    <div class="exp-timeline-spine"></div>
+
+    <!-- Research Intern — RIGHT -->
+    <div class="exp-item right">
+      <div class="exp-node"></div>
+      <div class="exp-item-content">
+        <span class="exp-dates-badge">June – July 2025</span>
         <p class="exp-role">Research Intern</p>
         <p class="exp-org">Rishihood University</p>
-        <p class="exp-dates">June – July 2025</p>
         <ul class="exp-points">
           <li>Analyzed survey-based data from large-scale field studies including the Kumbh survey</li>
           <li>Ensured data accuracy through systematic cleaning, structuring, and validation pipelines</li>
@@ -324,18 +388,21 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
         </ul>
       </div>
     </div>
-    <div class="exp-card">
-      <div class="exp-dot-col"><div class="exp-dot"></div></div>
-      <div>
+
+    <!-- GenAI Cert — LEFT -->
+    <div class="exp-item left">
+      <div class="exp-node"></div>
+      <div class="exp-item-content">
+        <span class="exp-dates-badge">2024</span>
         <p class="exp-role">Generative AI Certification</p>
         <p class="exp-org">GUVI</p>
-        <p class="exp-dates">2024</p>
         <ul class="exp-points">
           <li>Completed hands-on training in Generative AI — LLMs and Transformer architectures</li>
           <li>Studied advanced NLP techniques including Retrieval-Augmented Generation (RAG)</li>
         </ul>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -437,7 +504,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
 <!-- PROJECTS PREVIEW -->
 <section class="projects-preview">
   <div class="projects-preview-header">
-    <div><p class="section-eyebrow">Featured Work</p><h2 class="section-title">Recent <em>Projects</em></h2></div>
+    <div><p class="section-eyebrow">Featured Work</p><h2 class="section-title">Featured <em>Projects</em></h2></div>
     <a class="btn-outline" href="projects.html">View All Projects →</a>
   </div>
   <div class="mini-cards">
