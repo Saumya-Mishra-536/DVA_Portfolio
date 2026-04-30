@@ -62,7 +62,8 @@ h1 em{font-style:italic;color:var(--pink)}
 
 /* PHOTO */
 .hero-photo-wrap{position:relative;display:flex;align-items:center;justify-content:center}
-.photo-frame{width:360px;height:460px;border:1px solid var(--border2);background:var(--surface);position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;overflow:hidden}
+.photo-frame{width:360px;height:460px;border:1px solid var(--border2);background:var(--surface);position:relative;overflow:hidden}
+.photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;z-index:0}
 .photo-frame::before{content:'';position:absolute;inset:8px;border:1px dashed rgba(232,25,108,.2);pointer-events:none;z-index:1}
 .photo-corner{position:absolute;width:20px;height:20px;border-color:var(--pink);border-style:solid;z-index:2}
 .photo-corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}
@@ -271,11 +272,7 @@ footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-b
     <div class="photo-frame">
       <div class="photo-corner tl"></div><div class="photo-corner tr"></div>
       <div class="photo-corner bl"></div><div class="photo-corner br"></div>
-      <!-- REPLACE THIS BLOCK WITH YOUR PHOTO:
-           <img src="assets/images/profile.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;">
-      -->
-      <div class="photo-placeholder-icon">◻</div>
-      <p class="photo-label">Your photo goes here<br><br>Replace with img tag</p>
+      <img src="assets/images/profilepic.png" alt="Saumya Mishra">
     </div>
     <div class="photo-badge">Open to Opportunities</div>
   </div>
