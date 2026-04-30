@@ -4,433 +4,391 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — Saumya Mishra</title>
-<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap)" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Inconsolata:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#0d0d0d;--black2:#111111;--charcoal:#1a1a1a;--surface:#1f1f1f;--surface2:#242424;
-  --pink:#e8196c;--pink2:#ff2d7e;--pink-light:#f472b6;
-  --text:#f0e8e8;--text2:#9a8a8a;--text3:#c8b8b8;
-  --border:rgba(232,25,108,0.12);--border2:rgba(232,25,108,0.28);
-  --yellow:#f5c842;--blue:#5b9cf6;--green:#34d399;
+  --bg:#faf7f4;--bg2:#f3ede6;--ink:#1c1410;--ink2:#5a4a3a;--ink3:#8a7060;
+  --rose:#c0392b;--rose2:#e74c3c;--rose-pale:#fdf0ee;
+  --border:#e0d4c8;--border2:#c8b8a8;
+  --yellow:#d4a017;--blue:#2c5f8a;--green:#2d7a4a;
 }
-body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+html{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:'Lato',sans-serif;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(13,13,13,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:.05em}
-.nav-logo span{color:var(--pink)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--pink)}
+nav{
+  background:var(--bg);border-bottom:1px solid var(--border);
+  padding:.85rem 3.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:50;
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:.02em}
+.nav-logo em{font-style:italic;color:var(--rose)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s;font-weight:400}
+.nav-links a:hover,.nav-links a.active{color:var(--rose)}
 
-.page-header{padding:4rem 4rem 2.5rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,var(--black2) 0%,var(--black) 100%);position:relative;overflow:hidden}
-.page-header::before{content:'';position:absolute;top:-100px;right:0;width:500px;height:400px;background:radial-gradient(ellipse,rgba(232,25,108,.08) 0%,transparent 70%);pointer-events:none}
-.breadcrumb{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--text2);margin-bottom:1.2rem}
-.breadcrumb a{color:var(--pink);text-decoration:none}
-.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.1;margin-bottom:.8rem}
-.page-title em{font-style:italic;color:var(--pink)}
-.page-subtitle{font-size:.88rem;color:var(--text2);line-height:1.7;max-width:520px}
+.page-header{
+  padding:3.5rem 3.5rem 2.5rem;border-bottom:1px solid var(--border);
+  background:var(--bg2);
+}
+.breadcrumb{font-family:'Inconsolata',monospace;font-size:.68rem;letter-spacing:.18em;color:var(--ink3);margin-bottom:1rem}
+.breadcrumb a{color:var(--rose);text-decoration:none}
+.page-header h1{
+  font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:500;color:var(--ink);margin-bottom:.6rem;line-height:1.1;
+}
+.page-header h1 em{font-style:italic;color:var(--rose)}
+.page-header p{font-size:.88rem;color:var(--ink2);line-height:1.75;max-width:520px;font-weight:300}
 
-.filter-wrap{padding:2rem 4rem 0;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-.filter-btn{padding:.45rem 1.1rem;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text2);transition:all .18s}
-.filter-btn:hover{border-color:var(--pink);color:var(--pink)}
-.filter-btn.active{background:var(--pink);color:#fff;border-color:var(--pink)}
+/* filters */
+.filter-bar{
+  padding:1.4rem 3.5rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;background:var(--bg);
+}
+.filter-label{font-family:'Inconsolata',monospace;font-size:.65rem;letter-spacing:.18em;color:var(--ink3);text-transform:uppercase;margin-right:.3rem}
+.f-btn{
+  padding:.38rem 1rem;font-family:'Inconsolata',monospace;font-size:.68rem;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  border:1.5px solid var(--border2);background:transparent;color:var(--ink3);
+  transition:all .15s;
+}
+.f-btn:hover{border-color:var(--rose);color:var(--rose)}
+.f-btn.active{background:var(--rose);color:#fff;border-color:var(--rose)}
 
-.projects-wrap{padding:3rem 4rem 6rem}
+/* project content */
+.projects-content{flex:1;padding:2.5rem 3.5rem 4rem}
 
-.category-section{margin-bottom:5rem;transition:opacity .3s}
-.category-section.hidden{display:none}
+.cat-section{margin-bottom:3.5rem}
+.cat-section.hidden{display:none}
 
-.category-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
-.category-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.cat-python .category-dot{background:var(--yellow)}
-.cat-tableau .category-dot{background:var(--blue)}
-.cat-looker .category-dot{background:var(--green)}
-.cat-excel .category-dot{background:var(--pink)}
-.category-name{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase}
-.cat-python .category-name{color:var(--yellow)}
-.cat-tableau .category-name{color:var(--blue)}
-.cat-looker .category-name{color:var(--green)}
-.cat-excel .category-name{color:var(--pink)}
-.category-desc{font-size:.75rem;color:var(--text2)}
-.category-count{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--text2);margin-left:auto;letter-spacing:.1em}
+.cat-head{
+  display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem;
+  padding-bottom:.8rem;border-bottom:1px solid var(--border);
+}
+.cat-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.cat-name{font-family:'Inconsolata',monospace;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.cat-sub{font-size:.76rem;color:var(--ink3)}
+.cat-count{font-family:'Inconsolata',monospace;font-size:.65rem;color:var(--ink3);margin-left:auto;letter-spacing:.08em}
 
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.py-dot{background:var(--yellow)}.py-name{color:var(--yellow)}
+.tb-dot{background:var(--blue)}.tb-name{color:var(--blue)}
+.lk-dot{background:var(--green)}.lk-name{color:var(--green)}
+.xl-dot{background:var(--rose)}.xl-name{color:var(--rose)}
 
-.project-card{background:var(--charcoal);border:1px solid var(--border);display:flex;flex-direction:column;transition:border-color .22s,transform .22s,box-shadow .22s;cursor:pointer;text-decoration:none;color:inherit;position:relative;overflow:hidden}
-.project-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,25,108,.03) 0%,transparent 60%);pointer-events:none;opacity:0;transition:opacity .22s}
-.project-card:hover{border-color:rgba(232,25,108,.45);transform:translateY(-4px);box-shadow:0 12px 40px rgba(232,25,108,.1)}
-.project-card:hover::after{opacity:1}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
 
-.card-thumb{width:100%;height:160px;background:var(--surface2);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);flex-shrink:0}
+.proj-card{
+  background:var(--bg2);border:1px solid var(--border);
+  display:flex;flex-direction:column;
+  text-decoration:none;color:inherit;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+}
+.proj-card:hover{border-color:var(--rose2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(192,57,43,.08)}
+
+.card-thumb{height:140px;background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
 .card-thumb svg{width:100%;height:100%;position:absolute;inset:0}
-.card-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;position:absolute;inset:0}
 
-.card-body{padding:1.25rem 1.4rem;flex:1;display:flex;flex-direction:column;gap:.6rem}
-.card-top-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.1rem}
-.card-cat-badge{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:2px 7px;font-weight:500}
-.badge-python{background:rgba(245,200,66,.12);color:var(--yellow)}
-.badge-tableau{background:rgba(91,156,246,.12);color:var(--blue)}
-.badge-looker{background:rgba(52,211,153,.12);color:var(--green)}
-.badge-excel{background:rgba(232,25,108,.12);color:var(--pink)}
-.card-github-icon{color:var(--text2);transition:color .2s;display:flex;align-items:center}
-.project-card:hover .card-github-icon{color:var(--pink)}
+.card-body{padding:1.1rem 1.2rem;flex:1;display:flex;flex-direction:column;gap:.5rem}
+.card-meta{display:flex;align-items:center;justify-content:space-between}
+.card-badge{
+  font-family:'Inconsolata',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:2px 7px;font-weight:500;display:inline-block;
+}
+.b-py{background:rgba(212,160,23,.12);color:var(--yellow)}
+.b-tb{background:rgba(44,95,138,.12);color:var(--blue)}
+.b-lk{background:rgba(45,122,74,.12);color:var(--green)}
+.b-xl{background:rgba(192,57,43,.12);color:var(--rose)}
+.card-gh{color:var(--ink3);transition:color .2s;display:flex;align-items:center}
+.proj-card:hover .card-gh{color:var(--rose)}
 
-.card-title{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:400;color:var(--text);line-height:1.3;transition:color .2s}
-.project-card:hover .card-title{color:var(--pink-light)}
-.card-insight{font-size:.78rem;color:var(--text2);line-height:1.65;flex:1}
+.card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--ink);line-height:1.3;transition:color .2s}
+.proj-card:hover .card-title{color:var(--rose)}
+.card-insight{font-size:.76rem;color:var(--ink3);line-height:1.65;flex:1;font-weight:300}
 
-.card-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
-.card-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;padding:2px 7px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--text2)}
+.card-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.3rem}
+.card-tag{
+  font-family:'Inconsolata',monospace;font-size:.58rem;letter-spacing:.08em;
+  padding:1px 6px;background:var(--bg);border:1px solid var(--border);color:var(--ink3);
+}
 
-.card-footer{padding:.8rem 1.4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.card-footer-label{font-size:.68rem;color:var(--text2);letter-spacing:.05em;display:flex;align-items:center;gap:.4rem}
-.card-footer-label::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%}
-.footer-python::before{background:var(--yellow)}
-.footer-tableau::before{background:var(--blue)}
-.footer-looker::before{background:var(--green)}
-.footer-excel::before{background:var(--pink)}
-.card-arrow{font-size:.7rem;color:var(--text2);transition:color .2s,transform .2s}
-.project-card:hover .card-arrow{color:var(--pink);transform:translateX(3px)}
+.card-foot{
+  padding:.7rem 1.2rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.card-foot-label{font-size:.66rem;color:var(--ink3);display:flex;align-items:center;gap:.35rem}
+.card-foot-label::before{content:'';width:5px;height:5px;border-radius:50%;display:inline-block}
+.fl-py::before{background:var(--yellow)}
+.fl-tb::before{background:var(--blue)}
+.fl-lk::before{background:var(--green)}
+.fl-xl::before{background:var(--rose)}
+.card-arrow{font-size:.7rem;color:var(--ink3);transition:color .2s,transform .2s}
+.proj-card:hover .card-arrow{color:var(--rose);transform:translateX(3px)}
 
-.empty-state{text-align:center;padding:4rem 2rem;color:var(--text2);font-size:.88rem;display:none}
-.empty-state.visible{display:block}
+.gh-svg{width:13px;height:13px;fill:currentColor}
 
-footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.footer-left{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;color:var(--text2)}
-.footer-links{display:flex;gap:2rem}
-.footer-links a{font-size:.7rem;color:var(--text2);text-decoration:none;letter-spacing:.1em;transition:color .2s}
-.footer-links a:hover{color:var(--pink)}
-
-.gh-svg{width:14px;height:14px;fill:currentColor}
+footer{
+  padding:1.2rem 3.5rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--bg);flex-wrap:wrap;gap:1rem;
+}
+.footer-copy{font-family:'Inconsolata',monospace;font-size:.64rem;letter-spacing:.12em;color:var(--ink3)}
+.footer-links{display:flex;gap:1.8rem}
+.footer-links a{font-size:.7rem;color:var(--ink3);text-decoration:none;letter-spacing:.08em;transition:color .2s}
+.footer-links a:hover{color:var(--rose)}
 
 @media(max-width:768px){
-  nav{padding:1rem 1.5rem}
+  nav,.page-header,.filter-bar,.projects-content,footer{padding-left:1.5rem;padding-right:1.5rem}
   .nav-links{display:none}
-  .page-header,.filter-wrap,.projects-wrap{padding-left:1.5rem;padding-right:1.5rem}
   .cards-grid{grid-template-columns:1fr}
-  footer{padding:1.5rem}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html">Saumya<span>.</span></a>
+  <a class="nav-logo" href="index.html">Saumya <em>Mishra</em></a>
   <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#education">Education</a></li>
-    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html">About</a></li>
     <li><a href="projects.html" class="active">Projects</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
 <header class="page-header">
-  <p class="breadcrumb"><a href="index.html">Home</a> / Projects</p>
-  <h1 class="page-title">Analytics <em>Showcase</em></h1>
-  <p class="page-subtitle">A curated collection of data projects — each one answering a real question, revealing a hidden pattern, or driving a business decision.</p>
+  <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Projects</p>
+  <h1>Analytics <em>Showcase</em></h1>
+  <p>A collection of data projects — each one answering a real question, revealing a hidden pattern, or driving a business decision.</p>
 </header>
 
-<div class="filter-wrap">
-  <button class="filter-btn active" data-filter="all">All Projects</button>
-  <button class="filter-btn" data-filter="python">Python</button>
-  <button class="filter-btn" data-filter="tableau">Tableau</button>
-  <button class="filter-btn" data-filter="looker">Looker Studio</button>
-  <button class="filter-btn" data-filter="excel">Excel</button>
+<div class="filter-bar">
+  <span class="filter-label">Filter —</span>
+  <button class="f-btn active" data-f="all">All</button>
+  <button class="f-btn" data-f="python">Python</button>
+  <button class="f-btn" data-f="tableau">Tableau</button>
+  <button class="f-btn" data-f="looker">Looker Studio</button>
+  <button class="f-btn" data-f="excel">Excel</button>
 </div>
 
-<div class="projects-wrap">
+<div class="projects-content">
 
-  <!-- ══ PYTHON ══ -->
-  <div class="category-section cat-python" data-category="python">
-    <div class="category-header">
-      <div class="category-dot"></div>
-      <span class="category-name">Python</span>
-      <span class="category-desc">EDA · Time Series · Market &amp; Economic Analysis</span>
-      <span class="category-count">5 projects</span>
+  <!-- PYTHON -->
+  <div class="cat-section" data-cat="python">
+    <div class="cat-head">
+      <div class="cat-dot py-dot"></div>
+      <span class="cat-name py-name">Python</span>
+      <span class="cat-sub">EDA · Time Series · Market &amp; Economic Analysis</span>
+      <span class="cat-count">5 projects</span>
     </div>
     <div class="cards-grid">
 
-      <!-- AI Job Market -->
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis)" target="_blank">
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
         <div class="card-thumb">
-          <svg viewBox="0 0 360 160" xmlns="[w3.org](http://www.w3.org/2000/svg)" preserveAspectRatio="xMidYMid slice">
-            <rect width="360" height="160" fill="#1a1a1a"/>
-            <rect x="30" y="100" width="28" height="45" rx="1" fill="rgba(245,200,66,0.45)"/>
-            <rect x="68" y="78" width="28" height="67" rx="1" fill="rgba(245,200,66,0.58)"/>
-            <rect x="106" y="56" width="28" height="89" rx="1" fill="rgba(245,200,66,0.72)"/>
-            <rect x="144" y="40" width="28" height="105" rx="1" fill="rgba(245,200,66,0.85)"/>
-            <rect x="182" y="62" width="28" height="83" rx="1" fill="rgba(245,200,66,0.68)"/>
-            <rect x="220" y="82" width="28" height="63" rx="1" fill="rgba(245,200,66,0.52)"/>
-            <polyline points="44,103 82,81 120,59 158,43 196,65 234,85" fill="none" stroke="rgba(232,25,108,0.85)" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="44" cy="103" r="3" fill="#e8196c"/><circle cx="82" cy="81" r="3" fill="#e8196c"/>
-            <circle cx="120" cy="59" r="3" fill="#e8196c"/><circle cx="158" cy="43" r="3" fill="#e8196c"/>
-            <circle cx="196" cy="65" r="3" fill="#e8196c"/><circle cx="234" cy="85" r="3" fill="#e8196c"/>
-            <text x="30" y="152" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.22)" letter-spacing="2">ML   NLP   CV    DL   MLO   DS</text>
-            <line x1="20" y1="145" x2="290" y2="145" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-            <rect x="278" y="18" width="72" height="38" rx="2" fill="rgba(245,200,66,0.1)" stroke="rgba(245,200,66,0.2)" stroke-width="0.5"/>
-            <text x="314" y="34" font-family="monospace" font-size="13" fill="#f5c842" text-anchor="middle" font-weight="500">$142K</text>
-            <text x="314" y="48" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">AVG SALARY</text>
+          <svg viewBox="0 0 360 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="360" height="140" fill="#f3ede6"/>
+            <rect x="30" y="90" width="25" height="38" rx="1" fill="rgba(212,160,23,0.4)"/>
+            <rect x="65" y="72" width="25" height="56" rx="1" fill="rgba(212,160,23,0.55)"/>
+            <rect x="100" y="52" width="25" height="76" rx="1" fill="rgba(212,160,23,0.7)"/>
+            <rect x="135" y="38" width="25" height="90" rx="1" fill="rgba(212,160,23,0.85)"/>
+            <rect x="170" y="58" width="25" height="70" rx="1" fill="rgba(212,160,23,0.65)"/>
+            <rect x="205" y="75" width="25" height="53" rx="1" fill="rgba(212,160,23,0.5)"/>
+            <polyline points="42,92 78,74 113,54 148,40 183,60 218,77" fill="none" stroke="rgba(192,57,43,0.8)" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="42" cy="92" r="3" fill="#c0392b"/><circle cx="78" cy="74" r="3" fill="#c0392b"/>
+            <circle cx="113" cy="54" r="3" fill="#c0392b"/><circle cx="148" cy="40" r="3" fill="#c0392b"/>
+            <circle cx="183" cy="60" r="3" fill="#c0392b"/><circle cx="218" cy="77" r="3" fill="#c0392b"/>
+            <text x="30" y="136" font-family="monospace" font-size="6.5" fill="rgba(90,74,58,0.4)" letter-spacing="2">ML   NLP   CV   DL   MLO   DS</text>
+            <rect x="270" y="18" width="68" height="36" rx="2" fill="rgba(212,160,23,0.08)" stroke="rgba(212,160,23,0.3)" stroke-width="0.8"/>
+            <text x="304" y="33" font-family="monospace" font-size="12" fill="#d4a017" text-anchor="middle" font-weight="600">$142K</text>
+            <text x="304" y="46" font-family="monospace" font-size="5.5" fill="rgba(90,74,58,0.4)" text-anchor="middle" letter-spacing="1">AVG SALARY</text>
           </svg>
         </div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-py">Python</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">AI Job Market Analysis</p>
           <p class="card-insight">Revealed ML engineers earn 38% more than avg DS roles — mapped across 50+ job titles using salary trend &amp; demand analysis.</p>
-          <div class="card-tags"><span class="card-tag">EDA</span><span class="card-tag">salary-analysis</span><span class="card-tag">job-market</span><span class="card-tag">pandas</span></div>
+          <div class="card-tags"><span class="card-tag">EDA</span><span class="card-tag">salary-analysis</span><span class="card-tag">pandas</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-python">Python · Market Analysis</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-py">Python · Market Analysis</span><span class="card-arrow">→</span></div>
       </a>
 
-      <!-- Trader Performance -->
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/Trader-Performance-vs-Market-Sentiment)" target="_blank">
-        <div class="card-thumb">
-          <img src="assets/images/thumbnails/trader-sentiment.png" alt="Trader Performance vs Market Sentiment">
-        </div>
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/Trader-Performance-vs-Market-Sentiment" target="_blank">
+        <div class="card-thumb"><img src="assets/images/thumbnails/trader-sentiment.png" alt="Trader Performance"></div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-py">Python</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">Trader Performance vs Market Sentiment</p>
           <p class="card-insight">Uncovered 0.73 correlation between retail trader losses and negative sentiment spikes — timing beats analysis in volatile markets.</p>
-          <div class="card-tags"><span class="card-tag">finance</span><span class="card-tag">sentiment-analysis</span><span class="card-tag">time-series</span><span class="card-tag">correlation</span></div>
+          <div class="card-tags"><span class="card-tag">finance</span><span class="card-tag">sentiment</span><span class="card-tag">time-series</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-python">Python · Finance</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-py">Python · Finance</span><span class="card-arrow">→</span></div>
       </a>
 
-      <!-- Covid Impact -->
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/Covid-Impact-Analysis)" target="_blank">
-        <div class="card-thumb">
-          <img src="assets/images/thumbnails/covid-impact.png" alt="Covid-19 India Impact Analysis">
-        </div>
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/Covid-Impact-Analysis" target="_blank">
+        <div class="card-thumb"><img src="assets/images/thumbnails/covid-impact.png" alt="Covid Impact Analysis"></div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-py">Python</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">Covid-19 India Impact Analysis</p>
           <p class="card-insight">End-to-end pipeline using Pandas, NumPy &amp; Matplotlib across 43 Indian states — statistical modeling + 10+ visualizations on pandemic trends.</p>
-          <div class="card-tags"><span class="card-tag">EDA</span><span class="card-tag">time-series</span><span class="card-tag">healthcare</span><span class="card-tag">statistical-modeling</span></div>
+          <div class="card-tags"><span class="card-tag">EDA</span><span class="card-tag">time-series</span><span class="card-tag">healthcare</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-python">Python · Healthcare</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-py">Python · Healthcare</span><span class="card-arrow">→</span></div>
       </a>
 
-      <!-- InsightMart -->
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/InsightMart)" target="_blank">
-        <div class="card-thumb">
-          <img src="assets/images/thumbnails/insightmart.png" alt="InsightMart">
-        </div>
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/InsightMart" target="_blank">
+        <div class="card-thumb"><img src="assets/images/thumbnails/insightmart.png" alt="InsightMart"></div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-py">Python</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">InsightMart</p>
           <p class="card-insight">Identified top 3 revenue-driving categories — Electronics &amp; FMCG drive 62% of quarterly profits in this retail analytics deep-dive.</p>
-          <div class="card-tags"><span class="card-tag">retail-analytics</span><span class="card-tag">EDA</span><span class="card-tag">revenue-analysis</span><span class="card-tag">forecasting</span></div>
+          <div class="card-tags"><span class="card-tag">retail</span><span class="card-tag">EDA</span><span class="card-tag">revenue</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-python">Python · Retail</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-py">Python · Retail</span><span class="card-arrow">→</span></div>
       </a>
 
-      <!-- Economic Shock -->
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/Economic-Shock-Impact-Analyzer)" target="_blank">
-        <div class="card-thumb">
-          <img src="assets/images/thumbnails/economic-shock.png" alt="Economic Shock Impact Analyzer">
-        </div>
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/Economic-Shock-Impact-Analyzer" target="_blank">
+        <div class="card-thumb"><img src="assets/images/thumbnails/economic-shock.png" alt="Economic Shock"></div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-python">Python</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-py">Python</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">Economic Shock Impact Analyzer</p>
-          <p class="card-insight">ML + Monte Carlo simulation system modeling how commodity shocks ripple across GDP, employment &amp; consumer confidence over 6–18 months.</p>
-          <div class="card-tags"><span class="card-tag">macroeconomics</span><span class="card-tag">monte-carlo</span><span class="card-tag">streamlit</span><span class="card-tag">forecasting</span></div>
+          <p class="card-insight">ML + Monte Carlo simulation modeling how commodity shocks ripple across GDP, employment &amp; consumer confidence over 6–18 months.</p>
+          <div class="card-tags"><span class="card-tag">macroeconomics</span><span class="card-tag">monte-carlo</span><span class="card-tag">streamlit</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-python">Python · Economics</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-py">Python · Economics</span><span class="card-arrow">→</span></div>
       </a>
 
     </div>
   </div>
 
-  <!-- ══ TABLEAU ══ -->
-  <div class="category-section cat-tableau" data-category="tableau">
-    <div class="category-header">
-      <div class="category-dot"></div>
-      <span class="category-name">Tableau</span>
-      <span class="category-desc">Visual Storytelling · Business Insights · Interactive Dashboards</span>
-      <span class="category-count">1 project</span>
+  <!-- TABLEAU -->
+  <div class="cat-section" data-cat="tableau">
+    <div class="cat-head">
+      <div class="cat-dot tb-dot"></div>
+      <span class="cat-name tb-name">Tableau</span>
+      <span class="cat-sub">Visual Storytelling · Business Insights · Interactive Dashboards</span>
+      <span class="cat-count">1 project</span>
     </div>
     <div class="cards-grid">
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis)" target="_blank">
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
         <div class="card-thumb">
-          <svg viewBox="0 0 360 160" xmlns="[w3.org](http://www.w3.org/2000/svg)" preserveAspectRatio="xMidYMid slice">
-            <rect width="360" height="160" fill="#1a1a1a"/>
-            <rect x="20" y="18" width="145" height="72" rx="2" fill="rgba(91,156,246,0.28)" stroke="rgba(91,156,246,0.2)" stroke-width="0.5"/>
-            <text x="92" y="52" font-family="monospace" font-size="9" fill="rgba(91,156,246,0.9)" text-anchor="middle">ML Engineer</text>
-            <text x="92" y="66" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.45)" text-anchor="middle">$142K avg</text>
-            <rect x="172" y="18" width="82" height="72" rx="2" fill="rgba(91,156,246,0.18)" stroke="rgba(91,156,246,0.15)" stroke-width="0.5"/>
-            <text x="213" y="52" font-family="monospace" font-size="8" fill="rgba(91,156,246,0.8)" text-anchor="middle">Data Sci</text>
-            <text x="213" y="65" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)" text-anchor="middle">$118K</text>
-            <rect x="260" y="18" width="80" height="72" rx="2" fill="rgba(91,156,246,0.12)" stroke="rgba(91,156,246,0.1)" stroke-width="0.5"/>
-            <text x="300" y="52" font-family="monospace" font-size="8" fill="rgba(91,156,246,0.65)" text-anchor="middle">Analyst</text>
-            <text x="300" y="65" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.35)" text-anchor="middle">$89K</text>
-            <rect x="20" y="100" width="320" height="46" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-            <rect x="30" y="118" width="62" height="20" rx="1" fill="rgba(91,156,246,0.45)"/>
-            <rect x="98" y="109" width="62" height="29" rx="1" fill="rgba(91,156,246,0.6)"/>
-            <rect x="166" y="104" width="62" height="34" rx="1" fill="rgba(91,156,246,0.72)"/>
-            <rect x="234" y="111" width="62" height="27" rx="1" fill="rgba(91,156,246,0.52)"/>
-            <text x="30" y="109" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1">DEMAND BY ROLE</text>
+          <svg viewBox="0 0 360 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="360" height="140" fill="#f3ede6"/>
+            <rect x="20" y="16" width="130" height="65" rx="2" fill="rgba(44,95,138,0.2)" stroke="rgba(44,95,138,0.25)" stroke-width="0.6"/>
+            <text x="85" y="48" font-family="monospace" font-size="8.5" fill="rgba(44,95,138,0.9)" text-anchor="middle">ML Engineer</text>
+            <text x="85" y="62" font-family="monospace" font-size="7.5" fill="rgba(90,74,58,0.5)" text-anchor="middle">$142K avg</text>
+            <rect x="158" y="16" width="75" height="65" rx="2" fill="rgba(44,95,138,0.12)" stroke="rgba(44,95,138,0.18)" stroke-width="0.6"/>
+            <text x="195" y="48" font-family="monospace" font-size="7.5" fill="rgba(44,95,138,0.8)" text-anchor="middle">Data Sci</text>
+            <text x="195" y="61" font-family="monospace" font-size="7" fill="rgba(90,74,58,0.45)" text-anchor="middle">$118K</text>
+            <rect x="240" y="16" width="75" height="65" rx="2" fill="rgba(44,95,138,0.07)" stroke="rgba(44,95,138,0.12)" stroke-width="0.6"/>
+            <text x="277" y="48" font-family="monospace" font-size="7.5" fill="rgba(44,95,138,0.65)" text-anchor="middle">Analyst</text>
+            <text x="277" y="61" font-family="monospace" font-size="7" fill="rgba(90,74,58,0.4)" text-anchor="middle">$89K</text>
+            <rect x="20" y="93" width="295" height="38" rx="2" fill="rgba(255,255,255,0.5)" stroke="rgba(224,212,200,0.8)" stroke-width="0.6"/>
+            <rect x="30" y="110" width="55" height="15" rx="1" fill="rgba(44,95,138,0.4)"/>
+            <rect x="92" y="102" width="55" height="23" rx="1" fill="rgba(44,95,138,0.55)"/>
+            <rect x="154" y="98" width="55" height="27" rx="1" fill="rgba(44,95,138,0.68)"/>
+            <rect x="216" y="105" width="55" height="20" rx="1" fill="rgba(44,95,138,0.45)"/>
+            <text x="28" y="91" font-family="monospace" font-size="5.5" fill="rgba(90,74,58,0.4)" letter-spacing="1.5">DEMAND BY ROLE</text>
           </svg>
         </div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-tableau">Tableau</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-tb">Tableau</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">AI Job Market Dashboard</p>
           <p class="card-insight">Interactive Tableau story mapping salary bands, hiring surges, and skill demand across 10 AI specializations — built for executive-level storytelling.</p>
-          <div class="card-tags"><span class="card-tag">dashboard</span><span class="card-tag">storytelling</span><span class="card-tag">job-market</span><span class="card-tag">visual-analytics</span></div>
+          <div class="card-tags"><span class="card-tag">dashboard</span><span class="card-tag">storytelling</span><span class="card-tag">job-market</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-tableau">Tableau · Storytelling</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-tb">Tableau · Storytelling</span><span class="card-arrow">→</span></div>
       </a>
     </div>
   </div>
 
-  <!-- ══ LOOKER STUDIO ══ -->
-  <div class="category-section cat-looker" data-category="looker">
-    <div class="category-header">
-      <div class="category-dot"></div>
-      <span class="category-name">Looker Studio</span>
-      <span class="category-desc">Interactive Dashboards · KPI Tracking · Reporting</span>
-      <span class="category-count">1 project</span>
+  <!-- LOOKER -->
+  <div class="cat-section" data-cat="looker">
+    <div class="cat-head">
+      <div class="cat-dot lk-dot"></div>
+      <span class="cat-name lk-name">Looker Studio</span>
+      <span class="cat-sub">Interactive Dashboards · KPI Tracking · Reporting</span>
+      <span class="cat-count">1 project</span>
     </div>
     <div class="cards-grid">
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/Blinkit_Analytics_Center)" target="_blank">
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/Blinkit_Analytics_Center" target="_blank">
         <div class="card-thumb">
-          <svg viewBox="0 0 360 160" xmlns="[w3.org](http://www.w3.org/2000/svg)" preserveAspectRatio="xMidYMid slice">
-            <rect width="360" height="160" fill="#1a1a1a"/>
-            <rect x="20" y="14" width="74" height="42" rx="3" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.22)" stroke-width="0.5"/>
-            <text x="57" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">98.2%</text>
-            <text x="57" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">DELIVERY RATE</text>
-            <rect x="102" y="14" width="74" height="42" rx="3" fill="rgba(34,197,94,0.07)" stroke="rgba(34,197,94,0.15)" stroke-width="0.5"/>
-            <text x="139" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">11.4m</text>
-            <text x="139" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">AVG DELIVERY</text>
-            <rect x="184" y="14" width="74" height="42" rx="3" fill="rgba(34,197,94,0.05)" stroke="rgba(34,197,94,0.12)" stroke-width="0.5"/>
-            <text x="221" y="34" font-family="monospace" font-size="13" fill="#34d399" text-anchor="middle" font-weight="500">4.8★</text>
-            <text x="221" y="48" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.8">RATING</text>
-            <rect x="20" y="67" width="238" height="78" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-            <text x="28" y="79" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1">ORDERS OVER TIME</text>
-            <path d="M 30 138 L 60 128 L 90 118 L 120 113 L 150 98 L 180 93 L 210 83 L 238 78 L 238 140 L 30 140 Z" fill="rgba(34,197,94,0.05)"/>
-            <polyline points="30,138 60,128 90,118 120,113 150,98 180,93 210,83 238,78" fill="none" stroke="rgba(34,197,94,0.8)" stroke-width="1.8" stroke-linecap="round"/>
-            <rect x="270" y="67" width="74" height="78" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-            <text x="277" y="80" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.25)" letter-spacing="1">TOP CATS</text>
-            <rect x="277" y="86" width="42" height="7" rx="1" fill="rgba(34,197,94,0.6)"/><text x="323" y="93" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">40%</text>
-            <rect x="277" y="100" width="32" height="7" rx="1" fill="rgba(34,197,94,0.45)"/><text x="313" y="107" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">30%</text>
-            <rect x="277" y="114" width="22" height="7" rx="1" fill="rgba(34,197,94,0.3)"/><text x="303" y="121" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">20%</text>
-            <rect x="277" y="128" width="12" height="7" rx="1" fill="rgba(34,197,94,0.18)"/><text x="293" y="135" font-family="monospace" font-size="5.5" fill="rgba(255,255,255,0.3)">10%</text>
+          <svg viewBox="0 0 360 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="360" height="140" fill="#f3ede6"/>
+            <rect x="20" y="14" width="68" height="38" rx="3" fill="rgba(45,122,74,0.08)" stroke="rgba(45,122,74,0.25)" stroke-width="0.6"/>
+            <text x="54" y="30" font-family="monospace" font-size="12" fill="#2d7a4a" text-anchor="middle" font-weight="600">98.2%</text>
+            <text x="54" y="44" font-family="monospace" font-size="5" fill="rgba(90,74,58,0.45)" text-anchor="middle" letter-spacing="0.8">DELIVERY RATE</text>
+            <rect x="96" y="14" width="68" height="38" rx="3" fill="rgba(45,122,74,0.05)" stroke="rgba(45,122,74,0.18)" stroke-width="0.6"/>
+            <text x="130" y="30" font-family="monospace" font-size="12" fill="#2d7a4a" text-anchor="middle" font-weight="600">11.4m</text>
+            <text x="130" y="44" font-family="monospace" font-size="5" fill="rgba(90,74,58,0.45)" text-anchor="middle" letter-spacing="0.8">AVG DELIVERY</text>
+            <rect x="172" y="14" width="68" height="38" rx="3" fill="rgba(45,122,74,0.04)" stroke="rgba(45,122,74,0.14)" stroke-width="0.6"/>
+            <text x="206" y="30" font-family="monospace" font-size="12" fill="#2d7a4a" text-anchor="middle" font-weight="600">4.8★</text>
+            <text x="206" y="44" font-family="monospace" font-size="5" fill="rgba(90,74,58,0.45)" text-anchor="middle" letter-spacing="0.8">RATING</text>
+            <rect x="20" y="64" width="220" height="64" rx="2" fill="rgba(255,255,255,0.5)" stroke="rgba(224,212,200,.8)" stroke-width="0.5"/>
+            <text x="28" y="76" font-family="monospace" font-size="5.5" fill="rgba(90,74,58,0.38)" letter-spacing="1.2">ORDERS OVER TIME</text>
+            <path d="M 30 120 L 60 112 L 90 104 L 120 99 L 150 88 L 180 83 L 210 76 L 232 72 L 232 122 L 30 122 Z" fill="rgba(45,122,74,0.06)"/>
+            <polyline points="30,120 60,112 90,104 120,99 150,88 180,83 210,76 232,72" fill="none" stroke="rgba(45,122,74,0.75)" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="252" y="64" width="88" height="64" rx="2" fill="rgba(255,255,255,0.5)" stroke="rgba(224,212,200,.8)" stroke-width="0.5"/>
+            <text x="259" y="76" font-family="monospace" font-size="5.5" fill="rgba(90,74,58,0.38)" letter-spacing="1.2">TOP CATS</text>
+            <rect x="259" y="83" width="42" height="7" rx="1" fill="rgba(45,122,74,0.55)"/><text x="305" y="90" font-family="monospace" font-size="5.5" fill="rgba(90,74,58,0.4)">40%</text>
+            <rect x="259" y="96" width="32" height="7" rx="1" fill="rgba(45,122,74,0.4)"/><text x="295" y="103" font-family="monospace" font-size="5.5" fill="rgba(90,74,58,0.4)">30%</text>
+            <rect x="259" y="109" width="22" height="7" rx="1" fill="rgba(45,122,74,0.28)"/><text x="285" y="116" font-family="monospace" font-size="5.5" fill="rgba(90,74,58,0.4)">20%</text>
           </svg>
         </div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-looker">Looker Studio</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-lk">Looker Studio</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">Blinkit Analytics Center</p>
           <p class="card-insight">Built dashboards &amp; KPIs on a 5000+ row dataset — delivery SLAs, category demand, inventory &amp; feedback analysis. 60% of orders spike in a 3-hour window.</p>
-          <div class="card-tags"><span class="card-tag">dashboard</span><span class="card-tag">KPI-tracking</span><span class="card-tag">q-commerce</span><span class="card-tag">operations</span></div>
+          <div class="card-tags"><span class="card-tag">dashboard</span><span class="card-tag">KPI-tracking</span><span class="card-tag">q-commerce</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-looker">Looker Studio · Operations</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-lk">Looker Studio · Operations</span><span class="card-arrow">→</span></div>
       </a>
     </div>
   </div>
 
-  <!-- ══ EXCEL ══ -->
-  <div class="category-section cat-excel" data-category="excel">
-    <div class="category-header">
-      <div class="category-dot"></div>
-      <span class="category-name">Excel</span>
-      <span class="category-desc">Power Query · KPI Dashboards · Business Insights</span>
-      <span class="category-count">1 project</span>
+  <!-- EXCEL -->
+  <div class="cat-section" data-cat="excel">
+    <div class="cat-head">
+      <div class="cat-dot xl-dot"></div>
+      <span class="cat-name xl-name">Excel</span>
+      <span class="cat-sub">Power Query · KPI Dashboards · Business Insights</span>
+      <span class="cat-count">1 project</span>
     </div>
     <div class="cards-grid">
-      <a class="project-card" href="[github.com](https://github.com/Saumya-Mishra-536/Blinkit_Analytics_Center)" target="_blank">
-        <div class="card-thumb">
-          <img src="assets/images/thumbnails/blinkit.png" alt="Blinkit Analytics Center">
-        </div>
+      <a class="proj-card" href="https://github.com/Saumya-Mishra-536/Blinkit_Analytics_Center" target="_blank">
+        <div class="card-thumb"><img src="assets/images/thumbnails/blinkit.png" alt="Blinkit"></div>
         <div class="card-body">
-          <div class="card-top-meta">
-            <span class="card-cat-badge badge-excel">Excel</span>
-            <span class="card-github-icon"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span>
-          </div>
+          <div class="card-meta"><span class="card-badge b-xl">Excel</span><span class="card-gh"><svg class="gh-svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></span></div>
           <p class="card-title">Blinkit Analytics Center</p>
           <p class="card-insight">Built KPI dashboards on a 5000+ row dataset — uncovering delivery patterns, inventory gaps, and customer feedback trends using Excel Power Query.</p>
-          <div class="card-tags">
-            <span class="card-tag">dashboard</span>
-            <span class="card-tag">KPI-tracking</span>
-            <span class="card-tag">power-query</span>
-            <span class="card-tag">q-commerce</span>
-          </div>
+          <div class="card-tags"><span class="card-tag">dashboard</span><span class="card-tag">power-query</span><span class="card-tag">q-commerce</span></div>
         </div>
-        <div class="card-footer">
-          <span class="card-footer-label footer-excel">Excel · Operations</span>
-          <span class="card-arrow">→</span>
-        </div>
+        <div class="card-foot"><span class="card-foot-label fl-xl">Excel · Operations</span><span class="card-arrow">→</span></div>
       </a>
     </div>
   </div>
 
-  <div class="empty-state" id="emptyState">No projects found for this filter.</div>
 </div>
 
 <footer>
-  <p class="footer-left">© 2026 Saumya Mishra · Analytics Portfolio</p>
+  <p class="footer-copy">© 2025 Saumya Mishra · Analytics Portfolio</p>
   <div class="footer-links">
     <a href="index.html">← Home</a>
     <a href="contact.html">Contact</a>
-    <a href="[github.com](https://github.com/Saumya-Mishra-536)" target="_blank">GitHub</a>
+    <a href="https://github.com/Saumya-Mishra-536" target="_blank">GitHub</a>
   </div>
 </footer>
 
 <script>
-const btns=document.querySelectorAll('.filter-btn');
-const secs=document.querySelectorAll('.category-section');
-const empty=document.getElementById('emptyState');
+const btns=document.querySelectorAll('.f-btn');
+const secs=document.querySelectorAll('.cat-section');
 btns.forEach(btn=>btn.addEventListener('click',()=>{
   btns.forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  const f=btn.dataset.filter;
-  let any=false;
+  const f=btn.dataset.f;
   secs.forEach(s=>{
-    if(f==='all'||s.dataset.category===f){s.classList.remove('hidden');any=true}
+    if(f==='all'||s.dataset.cat===f){s.classList.remove('hidden')}
     else s.classList.add('hidden');
   });
-  empty.classList.toggle('visible',!any);
 }));
 </script>
 </body>
