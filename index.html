@@ -3,563 +3,545 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saumya Mishra — Data Analytics Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Saumya Mishra — Data Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Inconsolata:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#0d0d0d;--black2:#111111;--charcoal:#1a1a1a;--surface:#1f1f1f;--surface2:#242424;
-  --pink:#e8196c;--pink2:#ff2d7e;--pink-light:#f472b6;
-  --text:#f0e8e8;--text2:#9a8a8a;--text3:#c8b8b8;
-  --border:rgba(232,25,108,0.13);--border2:rgba(232,25,108,0.30);
-  --green:#34d399;--yellow:#f5c842;--blue:#5b9cf6;
+  --bg:#faf7f4;
+  --bg2:#f3ede6;
+  --ink:#1c1410;
+  --ink2:#5a4a3a;
+  --ink3:#8a7060;
+  --rose:#c0392b;
+  --rose2:#e74c3c;
+  --rose-pale:#fdf0ee;
+  --border:#e0d4c8;
+  --border2:#c8b8a8;
+  --yellow:#d4a017;
+  --blue:#2c5f8a;
+  --green:#2d7a4a;
 }
-html{scroll-behavior:smooth}
-body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 
-/* LOADER */
-#loader{position:fixed;inset:0;background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .8s ease,visibility .8s ease}
-#loader.done{opacity:0;visibility:hidden}
-.loader-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:300;color:var(--text);letter-spacing:.08em;margin-bottom:.3rem;text-align:center}
-.loader-title em{font-style:italic;color:var(--pink)}
-.loader-sub{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.25em;color:var(--text2);margin-bottom:3rem;text-align:center}
-.loader-bar-wrap{width:min(420px,80vw);height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;margin-bottom:1rem}
-.loader-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--pink),var(--pink-light));transition:width .05s linear}
-.loader-pct{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--pink);letter-spacing:.15em}
-.loader-dots{margin-top:2rem;display:flex;gap:6px}
-.loader-dots span{width:4px;height:4px;border-radius:50%;background:var(--pink);animation:dotpulse 1.4s ease-in-out infinite}
-.loader-dots span:nth-child(2){animation-delay:.2s}
-.loader-dots span:nth-child(3){animation-delay:.4s}
-@keyframes dotpulse{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:'Lato',sans-serif;overflow:hidden}
 
-#site{opacity:0;transition:opacity .8s ease}
-#site.visible{opacity:1}
+/* PAGE SYSTEM */
+.page{
+  position:fixed;inset:0;
+  display:flex;flex-direction:column;
+  opacity:0;pointer-events:none;
+  transition:opacity .5s ease,transform .5s ease;
+  transform:translateY(20px);
+  overflow:hidden;
+}
+.page.active{opacity:1;pointer-events:all;transform:translateY(0)}
+.page.exit-up{opacity:0;transform:translateY(-20px)}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(13,13,13,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:.05em}
-.nav-logo span{color:var(--pink)}
-.nav-links{display:flex;gap:1.8rem;list-style:none}
-.nav-links a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--pink)}
-
-/* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 4rem 4rem;gap:4rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(232,25,108,.1) 0%,transparent 70%);pointer-events:none}
-.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.28em;color:var(--pink);text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem}
-.hero-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--pink)}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.05;color:var(--text);margin-bottom:1.2rem}
-h1 em{font-style:italic;color:var(--pink)}
-.hero-sub{font-size:.9rem;line-height:1.8;color:var(--text2);max-width:420px;margin-bottom:.8rem}
-.hero-detail{font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:.08em;color:var(--text2);margin-bottom:2rem;display:flex;flex-direction:column;gap:.35rem}
-.hero-detail span{display:flex;align-items:center;gap:.5rem}
-.hero-detail span::before{content:'→';color:var(--pink)}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:var(--pink);color:#fff;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .2s}
-.btn-primary:hover{background:var(--pink2);transform:translateY(-1px)}
-.btn-outline{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:transparent;color:var(--text);font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border2);cursor:pointer;transition:all .2s}
-.btn-outline:hover{border-color:var(--pink);color:var(--pink)}
-
-/* PHOTO */
-.hero-photo-wrap{position:relative;display:flex;align-items:center;justify-content:center}
-.photo-frame{width:360px;height:460px;border:1px solid var(--border2);background:var(--surface);position:relative;overflow:hidden}
-.photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;z-index:0}
-.photo-frame::before{content:'';position:absolute;inset:8px;border:1px dashed rgba(232,25,108,.2);pointer-events:none;z-index:1}
-.photo-corner{position:absolute;width:20px;height:20px;border-color:var(--pink);border-style:solid;z-index:2}
-.photo-corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}
-.photo-corner.tr{top:-1px;right:-1px;border-width:2px 2px 0 0}
-.photo-corner.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
-.photo-corner.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
-.photo-placeholder-icon{font-size:2rem;opacity:.2}
-.photo-label{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;color:var(--text2);text-align:center;line-height:1.8;opacity:.6}
-.photo-badge{position:absolute;bottom:-16px;left:-16px;background:var(--pink);color:#fff;padding:.65rem 1.1rem;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;z-index:3}
-
-/* STATS STRIP */
-.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 4rem}
-.stat-item{padding:2rem;border-right:1px solid var(--border);text-align:center}
-.stat-item:last-child{border-right:none}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--pink);display:block}
-.stat-label{font-size:.65rem;letter-spacing:.14em;color:var(--text2);text-transform:uppercase;margin-top:.3rem}
-
-/* SECTION HELPERS */
-section{padding:6rem 4rem}
-.section-eyebrow{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.3em;color:var(--pink);text-transform:uppercase;margin-bottom:.8rem}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--text);margin-bottom:1rem;line-height:1.2}
-.section-title em{font-style:italic;color:var(--pink)}
-
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.about-metrics{display:flex;flex-direction:column;gap:1.2rem}
-.metric-row{display:flex;flex-direction:column;gap:.4rem}
-.metric-row-top{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text2)}
-.metric-row-top span:last-child{color:var(--pink);font-family:'DM Mono',monospace}
-.metric-bar-bg{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
-.metric-bar-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--pink-light));border-radius:2px}
-
-/* EDUCATION TIMELINE */
-.edu-section{background:var(--black2)}
-.edu-timeline{position:relative;max-width:860px;margin:0 auto;padding:0 0 2rem}
-.edu-timeline-spine{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--pink) 0%,rgba(232,25,108,.15) 100%);transform:translateX(-50%)}
-.edu-timeline-spine::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:12px solid rgba(232,25,108,.3)}
-.edu-item{display:flex;align-items:flex-start;gap:0;margin-bottom:3.5rem;position:relative}
-.edu-item.left{flex-direction:row-reverse}
-.edu-item.right{flex-direction:row}
-.edu-item-content{width:calc(50% - 40px);background:var(--charcoal);border:1px solid var(--border);padding:1.5rem;position:relative;transition:border-color .2s,transform .2s}
-.edu-item-content:hover{border-color:var(--border2);transform:translateY(-2px)}
-.edu-item-content::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--pink-light))}
-.edu-item.left .edu-item-content{margin-right:40px}
-.edu-item.left .edu-item-content::after{content:'';position:absolute;right:-9px;top:20px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:9px solid var(--charcoal)}
-.edu-item.right .edu-item-content{margin-left:40px}
-.edu-item.right .edu-item-content::after{content:'';position:absolute;left:-9px;top:20px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:9px solid var(--charcoal)}
-.edu-node{position:absolute;left:50%;transform:translateX(-50%);top:16px;width:18px;height:18px;border-radius:50%;background:var(--black2);border:2px solid var(--pink);z-index:2;transition:background .2s,box-shadow .2s}
-.edu-item:hover .edu-node{background:var(--pink);box-shadow:0 0 14px rgba(232,25,108,.5)}
-.edu-year{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--pink);text-transform:uppercase;margin-bottom:.5rem}
-.edu-inst{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:.25rem;line-height:1.3}
-.edu-degree{font-size:.8rem;color:var(--pink-light);margin-bottom:.4rem;font-weight:500}
-.edu-score{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--text2);margin-bottom:.5rem}
-.edu-score strong{color:var(--pink)}
-.edu-details{font-size:.76rem;color:var(--text2);line-height:1.65}
-.edu-activities{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
-.act-chip{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.1em;padding:2px 7px;background:rgba(232,25,108,.07);border:1px solid var(--border);color:var(--text2)}
-
-/* EXPERIENCE TIMELINE */
-.exp-timeline{position:relative;max-width:860px;margin:0 auto;padding:0 0 2rem}
-.exp-timeline-spine{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--pink) 0%,rgba(232,25,108,.15) 100%);transform:translateX(-50%)}
-.exp-item{display:flex;align-items:flex-start;gap:0;margin-bottom:3rem;position:relative}
-.exp-item.left{flex-direction:row-reverse}
-.exp-item.right{flex-direction:row}
-.exp-item-content{width:calc(50% - 40px);background:var(--charcoal);border:1px solid var(--border);padding:1.5rem;position:relative;transition:border-color .2s,transform .2s}
-.exp-item-content:hover{border-color:var(--border2);transform:translateY(-2px)}
-.exp-item-content::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--pink-light))}
-.exp-item.left .exp-item-content{margin-right:40px}
-.exp-item.left .exp-item-content::after{content:'';position:absolute;right:-9px;top:18px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:9px solid var(--charcoal)}
-.exp-item.right .exp-item-content{margin-left:40px}
-.exp-item.right .exp-item-content::after{content:'';position:absolute;left:-9px;top:18px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:9px solid var(--charcoal)}
-.exp-node{position:absolute;left:50%;transform:translateX(-50%);top:14px;width:18px;height:18px;border-radius:50%;background:var(--black);border:2px solid var(--pink);z-index:2;transition:background .2s,box-shadow .2s}
-.exp-item:hover .exp-node{background:var(--pink);box-shadow:0 0 14px rgba(232,25,108,.5)}
-.exp-dates-badge{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;color:var(--pink);text-transform:uppercase;margin-bottom:.45rem;display:block}
-.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:.15rem}
-.exp-org{font-size:.78rem;color:var(--pink-light);margin-bottom:.5rem;font-weight:500}
-.exp-points{list-style:none;display:flex;flex-direction:column;gap:.35rem}
-.exp-points li{font-size:.76rem;color:var(--text2);line-height:1.6;padding-left:.9rem;position:relative}
-.exp-points li::before{content:'→';position:absolute;left:0;color:var(--pink);font-size:.68rem}
-
-@media(max-width:760px){
-  .edu-timeline-spine,.exp-timeline-spine{left:18px}
-  .edu-item,.edu-item.left{flex-direction:row}
-  .edu-item-content,.edu-item.left .edu-item-content{width:calc(100% - 50px);margin-left:50px;margin-right:0}
-  .edu-item.left .edu-item-content::after{display:none}
-  .edu-item-content::after{left:-9px!important;right:auto!important;border-right:9px solid var(--charcoal)!important;border-left:none!important}
-  .edu-node{left:18px}
-  .exp-item,.exp-item.left{flex-direction:row}
-  .exp-item-content,.exp-item.left .exp-item-content{width:calc(100% - 50px);margin-left:50px;margin-right:0}
-  .exp-item.left .exp-item-content::after{display:none}
-  .exp-item-content::after{left:-9px!important;right:auto!important;border-right:9px solid var(--charcoal)!important;border-left:none!important}
-  .exp-node{left:18px}
+nav{
+  background:var(--bg);border-bottom:1px solid var(--border);
+  padding:.85rem 3.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;position:relative;z-index:50;
 }
-
-/* SKILLS */
-.skills-section{background:var(--black2)}
-.skills-outer-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.skill-group-title{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--pink);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
-.skill-bars{display:flex;flex-direction:column;gap:1rem}
-.skill-row{display:flex;flex-direction:column;gap:.35rem}
-.skill-row-top{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text3)}
-.skill-row-top span:last-child{font-family:'DM Mono',monospace;color:var(--pink);font-size:.68rem}
-.skill-bar-bg{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
-.skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--pink-light));border-radius:2px}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.8rem}
-.tool-chip{background:var(--charcoal);border:1px solid var(--border);padding:.8rem 1rem;transition:border-color .2s}
-.tool-chip:hover{border-color:var(--border2)}
-.tool-name{font-size:.82rem;color:var(--text);margin-bottom:.2rem;font-weight:500}
-.tool-use{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;color:var(--text2)}
-.lang-chips{display:flex;flex-wrap:wrap;gap:.6rem}
-.lang-chip{display:flex;align-items:center;gap:.5rem;padding:.45rem .9rem;border:1px solid var(--border);background:var(--charcoal);transition:border-color .2s}
-.lang-chip:hover{border-color:var(--border2)}
-.lang-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.lang-label{font-size:.76rem;color:var(--text3)}
-
-/* ACHIEVEMENTS */
-.achieve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem}
-.achieve-card{background:var(--charcoal);border:1px solid var(--border);padding:1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s}
-.achieve-card:hover{border-color:var(--border2)}
-.achieve-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--pink);line-height:1;flex-shrink:0;width:28px;text-align:right}
-.achieve-text{font-size:.8rem;color:var(--text2);line-height:1.65}
-.achieve-text strong{color:var(--text3);display:block;margin-bottom:.2rem;font-weight:500}
-
-/* PROJECTS PREVIEW */
-.projects-preview{background:var(--black2)}
-.projects-preview-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
-.mini-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
-.mini-card{background:var(--charcoal);border:1px solid var(--border);padding:1.4rem;transition:border-color .2s,transform .2s;text-decoration:none;display:block;color:inherit}
-.mini-card:hover{border-color:rgba(232,25,108,.45);transform:translateY(-3px)}
-.mini-card-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;padding:2px 8px;margin-bottom:.8rem;text-transform:uppercase;font-weight:500}
-.tag-python{background:rgba(245,200,66,.12);color:var(--yellow)}
-.tag-tableau{background:rgba(91,156,246,.12);color:var(--blue)}
-.tag-looker{background:rgba(34,197,94,.12);color:var(--green)}
-.tag-excel{background:rgba(232,25,108,.12);color:var(--pink)}
-.mini-card-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:.4rem;line-height:1.3}
-.mini-card-desc{font-size:.76rem;color:var(--text2);line-height:1.6}
-
-/* CTA */
-.cta-section{background:var(--charcoal);text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.cta-section p{font-size:.9rem;color:var(--text2);margin:1rem auto 2.5rem;max-width:480px;line-height:1.7}
-
-/* FOOTER */
-footer{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);flex-wrap:wrap;gap:1rem}
-.footer-left{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;color:var(--text2)}
-.footer-right{display:flex;gap:2rem}
-.footer-right a{font-size:.7rem;color:var(--text2);text-decoration:none;letter-spacing:.1em;transition:color .2s}
-.footer-right a:hover{color:var(--pink)}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem}
-  .nav-links{display:none}
-  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:3rem}
-  .hero-photo-wrap{order:-1}
-  .photo-frame{width:100%;max-width:300px;height:340px}
-  .stats-strip{grid-template-columns:1fr 1fr;margin:0 1.5rem}
-  section{padding:4rem 1.5rem}
-  .edu-grid,.about-grid,.skills-outer-grid{grid-template-columns:1fr;gap:2rem}
-  footer{padding:1.5rem}
+.nav-logo{
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;
+  color:var(--ink);text-decoration:none;letter-spacing:.02em;
 }
+.nav-logo em{font-style:italic;color:var(--rose)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);text-decoration:none;transition:color .2s;font-weight:400;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--rose)}
+
+/* PAGE CONTENT AREAS */
+.page-body{flex:1;overflow-y:auto;overflow-x:hidden}
+
+/* === HERO PAGE === */
+#pg-hero{background:var(--bg)}
+.hero-wrap{
+  min-height:calc(100vh - 55px);
+  display:grid;grid-template-columns:1.1fr 1fr;
+  align-items:stretch;
+}
+.hero-left{
+  padding:4rem 3.5rem 3rem;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border);
+}
+.hero-tag{
+  font-family:'Inconsolata',monospace;font-size:.72rem;
+  letter-spacing:.2em;color:var(--rose);text-transform:uppercase;
+  margin-bottom:1.6rem;display:flex;align-items:center;gap:.7rem;
+}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--rose)}
+h1{
+  font-family:'Playfair Display',serif;font-size:clamp(2.8rem,4.5vw,4.5rem);
+  font-weight:500;line-height:1.12;color:var(--ink);margin-bottom:1.4rem;
+}
+h1 em{font-style:italic;color:var(--rose)}
+.hero-desc{
+  font-size:.92rem;color:var(--ink2);line-height:1.85;margin-bottom:1.6rem;
+  max-width:440px;font-weight:300;
+}
+.hero-facts{
+  display:flex;flex-direction:column;gap:.5rem;margin-bottom:2.2rem;
+}
+.hero-fact{
+  font-family:'Inconsolata',monospace;font-size:.72rem;
+  color:var(--ink3);letter-spacing:.04em;display:flex;align-items:center;gap:.55rem;
+}
+.hero-fact::before{content:'↳';color:var(--rose);font-size:.78rem}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-main{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.8rem 1.8rem;background:var(--rose);color:#fff;
+  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background .18s,transform .18s;
+}
+.btn-main:hover{background:var(--rose2);transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.8rem 1.8rem;background:transparent;color:var(--ink);
+  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;border:1.5px solid var(--border2);cursor:pointer;
+  transition:all .18s;
+}
+.btn-ghost:hover{border-color:var(--rose);color:var(--rose)}
+
+.hero-right{
+  display:flex;flex-direction:column;
+  background:var(--bg2);
+}
+.hero-photo{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:3rem;border-bottom:1px solid var(--border);
+}
+.photo-box{
+  width:260px;height:320px;background:var(--bg);
+  border:1.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  position:relative;gap:.8rem;
+}
+.photo-box img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;position:absolute;inset:0}
+.photo-box-placeholder{opacity:.35;font-size:2rem}
+.photo-box-label{font-family:'Inconsolata',monospace;font-size:.6rem;letter-spacing:.15em;color:var(--ink3);text-align:center;line-height:1.8}
+.photo-tag{
+  position:absolute;bottom:-14px;right:-14px;
+  background:var(--rose);color:#fff;
+  padding:.4rem .9rem;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+}
+.hero-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.stat-box{
+  padding:1.4rem 1.8rem;border-right:1px solid var(--border);border-top:1px solid var(--border);
+}
+.stat-box:nth-child(2n){border-right:none}
+.stat-n{
+  font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;
+  color:var(--rose);line-height:1;display:block;
+}
+.stat-l{font-size:.65rem;letter-spacing:.12em;color:var(--ink3);text-transform:uppercase;margin-top:.25rem}
+
+/* about page nav arrow */
+.page-nav-hint{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:1rem;border-top:1px solid var(--border);
+  font-size:.72rem;color:var(--ink3);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  transition:color .2s;flex-shrink:0;background:var(--bg);
+}
+.page-nav-hint:hover{color:var(--rose)}
+.page-nav-hint svg{width:14px;height:14px;transition:transform .2s}
+.page-nav-hint:hover svg{transform:translateY(3px)}
+
+/* === ABOUT PAGE === */
+#pg-about{background:var(--bg)}
+.about-layout{padding:2.5rem 3.5rem;display:flex;flex-direction:column;gap:2.5rem}
+
+/* About intro */
+.about-intro{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.about-title-block h2{
+  font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);
+  font-weight:500;color:var(--ink);margin-bottom:.8rem;line-height:1.2;
+}
+.about-title-block h2 em{font-style:italic;color:var(--rose)}
+.about-body{font-size:.88rem;color:var(--ink2);line-height:1.85;font-weight:300}
+.about-body + .about-body{margin-top:.8rem}
+
+/* Skills */
+.skills-strip{
+  background:var(--bg2);border:1px solid var(--border);
+  padding:1.6rem 2rem;
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:center;
+}
+.skill-pill{
+  font-family:'Inconsolata',monospace;font-size:.74rem;letter-spacing:.08em;
+  padding:.3rem .8rem;border:1px solid var(--border2);color:var(--ink2);
+  background:var(--bg);
+}
+.skill-pill.hi{border-color:var(--rose);color:var(--rose);background:var(--rose-pale)}
+
+/* Edu + Internship side-by-side */
+.edu-intern-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+
+.column-header{
+  font-family:'Inconsolata',monospace;font-size:.7rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--rose);margin-bottom:1.2rem;
+  padding-bottom:.6rem;border-bottom:2px solid var(--rose);
+  display:flex;align-items:center;gap:.6rem;
+}
+.column-header span{opacity:.4}
+
+.edu-card{
+  background:var(--bg);border:1px solid var(--border);
+  padding:1.2rem 1.4rem;margin-bottom:.8rem;
+  border-left:3px solid var(--border2);
+  transition:border-left-color .2s;
+}
+.edu-card:hover{border-left-color:var(--rose)}
+.edu-year{
+  font-family:'Inconsolata',monospace;font-size:.64rem;letter-spacing:.18em;
+  color:var(--rose);text-transform:uppercase;margin-bottom:.35rem;
+}
+.edu-school{
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;
+  color:var(--ink);margin-bottom:.2rem;line-height:1.3;
+}
+.edu-degree{font-size:.78rem;color:var(--ink2);margin-bottom:.25rem}
+.edu-score{
+  font-family:'Inconsolata',monospace;font-size:.68rem;color:var(--green);
+  letter-spacing:.05em;
+}
+.edu-chips{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+.edu-chip{
+  font-size:.58rem;letter-spacing:.08em;padding:2px 6px;
+  background:var(--bg2);border:1px solid var(--border);color:var(--ink3);
+}
+.edu-chip.hi{background:var(--rose-pale);border-color:rgba(192,57,43,.25);color:var(--rose)}
+
+.intern-card{
+  background:var(--bg);border:1px solid var(--border);
+  padding:1.2rem 1.4rem;margin-bottom:.8rem;
+  border-left:3px solid var(--border2);
+  transition:border-left-color .2s;
+}
+.intern-card:hover{border-left-color:var(--rose)}
+.intern-date{
+  font-family:'Inconsolata',monospace;font-size:.64rem;letter-spacing:.18em;
+  color:var(--rose);text-transform:uppercase;margin-bottom:.35rem;
+}
+.intern-role{
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;
+  color:var(--ink);margin-bottom:.15rem;
+}
+.intern-org{font-size:.78rem;color:var(--ink2);margin-bottom:.5rem;font-weight:700}
+.intern-pts{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.intern-pts li{
+  font-size:.76rem;color:var(--ink2);line-height:1.6;
+  padding-left:1rem;position:relative;font-weight:300;
+}
+.intern-pts li::before{content:'—';position:absolute;left:0;color:var(--rose);font-size:.7rem}
+
+/* Featured projects */
+.featured-section{}
+.featured-header{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem;
+}
+.featured-header h3{
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;color:var(--ink);
+}
+.featured-header h3 em{font-style:italic;color:var(--rose)}
+.see-all-link{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);
+  text-decoration:none;font-weight:700;transition:gap .2s;
+}
+.see-all-link:hover{gap:.7rem}
+
+.featured-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.feat-card{
+  background:var(--bg2);border:1px solid var(--border);
+  padding:1.2rem;text-decoration:none;color:inherit;
+  transition:border-color .2s,transform .2s;display:block;
+}
+.feat-card:hover{border-color:var(--rose);transform:translateY(-3px)}
+.feat-badge{
+  font-family:'Inconsolata',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:2px 7px;font-weight:500;
+  display:inline-block;margin-bottom:.7rem;
+}
+.badge-py{background:rgba(212,160,23,.12);color:var(--yellow)}
+.badge-tb{background:rgba(44,95,138,.12);color:var(--blue)}
+.badge-lk{background:rgba(45,122,74,.12);color:var(--green)}
+.badge-xl{background:rgba(192,57,43,.12);color:var(--rose)}
+.feat-title{
+  font-family:'Playfair Display',serif;font-size:.95rem;font-weight:500;
+  color:var(--ink);margin-bottom:.4rem;line-height:1.35;
+}
+.feat-desc{font-size:.74rem;color:var(--ink3);line-height:1.6;font-weight:300}
+
+.see-all-row{
+  margin-top:1rem;text-align:center;padding:1rem;
+  border:1.5px dashed var(--border2);
+}
+.see-all-row a{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);
+  text-decoration:none;font-weight:700;transition:gap .2s;
+}
+.see-all-row a:hover{gap:.9rem}
+
+/* footer */
+.site-footer{
+  padding:1.2rem 3.5rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--bg);flex-shrink:0;
+}
+.footer-copy{font-family:'Inconsolata',monospace;font-size:.64rem;letter-spacing:.12em;color:var(--ink3)}
+.footer-links{display:flex;gap:1.8rem}
+.footer-links a{font-size:.7rem;color:var(--ink3);text-decoration:none;letter-spacing:.08em;transition:color .2s}
+.footer-links a:hover{color:var(--rose)}
+
+/* back arrow */
+.back-hint{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.6rem 3.5rem;font-size:.72rem;color:var(--ink3);
+  letter-spacing:.08em;cursor:pointer;background:var(--bg2);border-bottom:1px solid var(--border);
+  transition:color .2s;flex-shrink:0;text-transform:uppercase;
+}
+.back-hint:hover{color:var(--rose)}
+.back-hint svg{width:13px;height:13px}
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <p class="loader-title">Entering <em>Saumya's</em> Analytics World</p>
-  <p class="loader-sub">data · insights · decisions</p>
-  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
-  <p class="loader-pct" id="loaderPct">0%</p>
-  <div class="loader-dots"><span></span><span></span><span></span></div>
-</div>
-
-<div id="site">
-
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="index.html">Saumya<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <p class="hero-eyebrow">Data Analytics Portfolio</p>
-    <h1>Hi, I'm<br><em>Saumya</em><br>Mishra</h1>
-    <p class="hero-sub">Data Science undergraduate skilled in exploratory data analysis, dashboarding, and deriving business insights from large datasets. Experienced in Python, SQL, and BI tools, with projects focused on market trends, customer behavior, and operational analytics.</p>
-    <div class="hero-detail">
-      <span>B.Tech CSE · Data Science · Rishihood University</span>
-      <span>Minor in Economics &amp; Public Policy</span>
-      <span>VP, Public Policy Club · Ignite 2025 Finalist · Top 0.1% Viksit Bharat</span>
+<!-- PAGE 1: HERO -->
+<div class="page active" id="pg-hero">
+  <nav>
+    <a class="nav-logo" href="#">Saumya <em>Mishra</em></a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('pg-hero')" class="active" id="nl-home">Home</a></li>
+      <li><a href="#" onclick="showPage('pg-about')" id="nl-about">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <p class="hero-tag">Data Analytics Portfolio</p>
+      <h1>Hi, I'm<br><em>Saumya</em><br>Mishra</h1>
+      <p class="hero-desc">Data Science undergraduate with a curiosity-first approach to analytics. I turn messy datasets into decisions — through Python, SQL, and BI tools that tell honest stories.</p>
+      <div class="hero-facts">
+        <span class="hero-fact">B.Tech CSE · Data Science — Rishihood University</span>
+        <span class="hero-fact">Minor in Economics &amp; Public Policy</span>
+        <span class="hero-fact">VP, Public Policy Club · Ignite 2025 Top 10 · Viksit Bharat Top 0.1%</span>
+      </div>
+      <div class="hero-btns">
+        <a class="btn-main" href="#" onclick="showPage('pg-about')">Explore My Work →</a>
+        <a class="btn-ghost" href="contact.html">Get In Touch</a>
+      </div>
     </div>
-    <div class="hero-btns">
-      <a class="btn-primary" href="projects.html">Explore My Work →</a>
-      <a class="btn-outline" href="contact.html">Get In Touch</a>
-    </div>
-  </div>
-  <div class="hero-photo-wrap">
-    <div class="photo-frame">
-      <div class="photo-corner tl"></div><div class="photo-corner tr"></div>
-      <div class="photo-corner bl"></div><div class="photo-corner br"></div>
-      <img src="assets/images/profilepic.png" alt="Saumya Mishra">
-    </div>
-    <div class="photo-badge">Open to Opportunities</div>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-strip">
-  <div class="stat-item"><span class="stat-num">8+</span><p class="stat-label">Projects</p></div>
-  <div class="stat-item"><span class="stat-num">4</span><p class="stat-label">Tools Mastered</p></div>
-  <div class="stat-item"><span class="stat-num">0.1%</span><p class="stat-label">Viksit Bharat</p></div>
-  <div class="stat-item"><span class="stat-num">Top 10</span><p class="stat-label">Ignite 2025</p></div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-    <div>
-      <p class="section-eyebrow">Me as Data</p>
-      <h2 class="section-title">Numbers that <em>define</em> me</h2>
-      <p style="color:var(--text2);font-size:.88rem;line-height:1.8;margin-bottom:2rem;">
-        I'm a first-year Data Science student at Rishihood University with a curiosity-first approach to analytics. I don't just clean data — I interrogate it, model it, and turn it into something that drives real decisions. My work spans economic analysis, business intelligence, and field research.
-      </p>
-      <a class="btn-outline" href="projects.html">See My Projects →</a>
-    </div>
-    <div class="about-metrics">
-      <div class="metric-row"><div class="metric-row-top"><span>Python · EDA &amp; Analysis</span><span>90%</span></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:90%"></div></div></div>
-      <div class="metric-row"><div class="metric-row-top"><span>Statistical Modeling</span><span>85%</span></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:85%"></div></div></div>
-      <div class="metric-row"><div class="metric-row-top"><span>Tableau · Visual Storytelling</span><span>82%</span></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:82%"></div></div></div>
-      <div class="metric-row"><div class="metric-row-top"><span>Looker Studio · Dashboards</span><span>80%</span></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:80%"></div></div></div>
-      <div class="metric-row"><div class="metric-row-top"><span>Excel · Power Query &amp; Models</span><span>78%</span></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:78%"></div></div></div>
-      <div class="metric-row"><div class="metric-row-top"><span>SQL · Querying &amp; Modeling</span><span>75%</span></div><div class="metric-bar-bg"><div class="metric-bar-fill" style="width:75%"></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section class="edu-section" id="education">
-  <p class="section-eyebrow">Academic Background</p>
-  <h2 class="section-title" style="margin-bottom:3rem;text-align:center">Education &amp; <em>Formation</em></h2>
-  <div class="edu-timeline">
-    <div class="edu-timeline-spine"></div>
-
-    <!-- Rishihood — RIGHT -->
-    <div class="edu-item right">
-      <div class="edu-node"></div>
-      <div class="edu-item-content">
-        <p class="edu-year">Aug 2024 → 2028</p>
-        <p class="edu-inst">Rishihood University<br><span style="font-size:.82rem;color:var(--text2)">Newton School of Technology, Haryana</span></p>
-        <p class="edu-degree">B.Tech — Computer Science &amp; Engineering</p>
-        <p class="edu-score">CGPA <strong>7.04 / 10</strong></p>
-        <p class="edu-details"><strong style="color:var(--text3)">Major:</strong> Data Science &nbsp;·&nbsp; <strong style="color:var(--text3)">Minor:</strong> Economics &amp; Public Policy</p>
-        <div class="edu-activities">
-          <span class="act-chip">Robotics Club</span>
-          <span class="act-chip">Music Club</span>
-          <span class="act-chip">Literary Club</span>
-          <span class="act-chip" style="border-color:var(--border2);color:var(--pink)">VP · Public Policy Club</span>
+    <div class="hero-right">
+      <div class="hero-photo">
+        <div class="photo-box">
+          <!-- Replace with: <img src="assets/images/profile.jpg"> -->
+          <div class="photo-box-placeholder">◻</div>
+          <p class="photo-box-label">Your photo here<br>Replace with &lt;img&gt; tag</p>
+          <div class="photo-tag">Open to Opportunities</div>
         </div>
       </div>
+      <div class="hero-stats">
+        <div class="stat-box"><span class="stat-n">8+</span><p class="stat-l">Projects</p></div>
+        <div class="stat-box"><span class="stat-n">4</span><p class="stat-l">Tools Mastered</p></div>
+        <div class="stat-box"><span class="stat-n">0.1%</span><p class="stat-l">Viksit Bharat</p></div>
+        <div class="stat-box"><span class="stat-n">Top 10</span><p class="stat-l">Ignite 2025</p></div>
+      </div>
     </div>
+  </div>
+  <div class="page-nav-hint" onclick="showPage('pg-about')">
+    About &amp; Projects
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</div>
 
-    <!-- Sri Chaitanya XII — LEFT -->
-    <div class="edu-item left">
-      <div class="edu-node"></div>
-      <div class="edu-item-content">
-        <p class="edu-year">Class XII · 2023</p>
-        <p class="edu-inst">Sri Chaitanya Techno School</p>
-        <p class="edu-degree">Science — Biology &amp; Mathematics · Bengaluru, Karnataka</p>
-        <p class="edu-score">Percentage <strong>74.80%</strong></p>
-        <p class="edu-details">Strong foundation in mathematical reasoning and scientific thinking — the base of my analytical mindset.</p>
-        <div class="edu-activities">
-          <span class="act-chip">SOF IGKO · School &amp; City Rank 1</span>
-          <span class="act-chip">NSO · School &amp; City Rank 1</span>
+<!-- PAGE 2: ABOUT -->
+<div class="page" id="pg-about">
+  <nav>
+    <a class="nav-logo" href="#">Saumya <em>Mishra</em></a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('pg-hero')" id="nl2-home">Home</a></li>
+      <li><a href="#" onclick="showPage('pg-about')" class="active" id="nl2-about">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="back-hint" onclick="showPage('pg-hero')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Home
+  </div>
+  <div class="page-body">
+    <div class="about-layout">
+
+      <!-- Intro -->
+      <div class="about-intro">
+        <div class="about-title-block">
+          <p style="font-family:'Inconsolata',monospace;font-size:.68rem;letter-spacing:.22em;color:var(--rose);text-transform:uppercase;margin-bottom:.7rem">About Me</p>
+          <h2>Turning data into<br><em>real decisions</em></h2>
+        </div>
+        <div>
+          <p class="about-body">I'm a first-year Data Science student at Rishihood University — I don't just clean data, I interrogate it. My work spans economic analysis, business intelligence, and field research.</p>
+          <p class="about-body" style="margin-top:.8rem">I've worked on everything from pandemic impact modeling to quick-commerce dashboards, always trying to find the one insight that actually changes how someone thinks about a problem.</p>
+          <div class="skills-strip" style="margin-top:1.2rem">
+            <span style="font-family:'Inconsolata',monospace;font-size:.65rem;letter-spacing:.15em;color:var(--ink3);text-transform:uppercase;margin-right:.3rem">Skills —</span>
+            <span class="skill-pill hi">Python</span>
+            <span class="skill-pill hi">Pandas</span>
+            <span class="skill-pill hi">Tableau</span>
+            <span class="skill-pill">Looker Studio</span>
+            <span class="skill-pill">SQL</span>
+            <span class="skill-pill">Excel</span>
+            <span class="skill-pill">Matplotlib</span>
+            <span class="skill-pill">Seaborn</span>
+            <span class="skill-pill">Streamlit</span>
+            <span class="skill-pill">MongoDB</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Vedanta Academy X — RIGHT -->
-    <div class="edu-item right">
-      <div class="edu-node" style="border-color:var(--pink-light)"></div>
-      <div class="edu-item-content">
-        <p class="edu-year">Class X · 2021</p>
-        <p class="edu-inst">Vedanta Academy</p>
-        <p class="edu-degree">Tirupur, Tamil Nadu</p>
-        <p class="edu-score">Percentage <strong style="color:var(--green)">96.00%</strong></p>
-        <p class="edu-details">Exceptional academic foundation with top scores across all subjects — school topper in multiple disciplines.</p>
-      </div>
-    </div>
+      <!-- Education + Internship side by side -->
+      <div class="edu-intern-grid">
+        <!-- Education -->
+        <div>
+          <p class="column-header">Education <span>///</span></p>
 
-  </div>
-</section>
+          <div class="edu-card">
+            <p class="edu-year">Aug 2024 → 2028</p>
+            <p class="edu-school">Rishihood University</p>
+            <p class="edu-degree">B.Tech CSE — Data Science · Newton School of Technology</p>
+            <p class="edu-score">CGPA 7.04 / 10 &nbsp;·&nbsp; Minor: Economics &amp; Public Policy</p>
+            <div class="edu-chips">
+              <span class="edu-chip hi">VP — Public Policy Club</span>
+              <span class="edu-chip">Robotics Club</span>
+              <span class="edu-chip">Music Club</span>
+              <span class="edu-chip">Literary Club</span>
+            </div>
+          </div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <p class="section-eyebrow">Work &amp; Certifications</p>
-  <h2 class="section-title" style="margin-bottom:3rem;text-align:center">Experience &amp; <em>Training</em></h2>
-  <div class="exp-timeline">
-    <div class="exp-timeline-spine"></div>
+          <div class="edu-card">
+            <p class="edu-year">Class XII · 2023</p>
+            <p class="edu-school">Sri Chaitanya Techno School</p>
+            <p class="edu-degree">Science — Biology &amp; Mathematics · Bengaluru</p>
+            <p class="edu-score">74.80%</p>
+            <div class="edu-chips">
+              <span class="edu-chip">SOF IGKO — School &amp; City Rank 1</span>
+              <span class="edu-chip">NSO — School &amp; City Rank 1</span>
+            </div>
+          </div>
 
-    <!-- Research Intern — RIGHT -->
-    <div class="exp-item right">
-      <div class="exp-node"></div>
-      <div class="exp-item-content">
-        <span class="exp-dates-badge">June – July 2025</span>
-        <p class="exp-role">Research Intern</p>
-        <p class="exp-org">Rishihood University</p>
-        <ul class="exp-points">
-          <li>Analyzed survey-based data from large-scale field studies including the Kumbh survey</li>
-          <li>Ensured data accuracy through systematic cleaning, structuring, and validation pipelines</li>
-          <li>Generated statistical summaries and visual reports to communicate findings to researchers</li>
-        </ul>
-      </div>
-    </div>
+          <div class="edu-card">
+            <p class="edu-year">Class X · 2021</p>
+            <p class="edu-school">Vedanta Academy</p>
+            <p class="edu-degree">Tirupur, Tamil Nadu</p>
+            <p class="edu-score" style="color:var(--green);font-weight:700">96.00%</p>
+          </div>
+        </div>
 
-    <!-- GenAI Cert — LEFT -->
-    <div class="exp-item left">
-      <div class="exp-node"></div>
-      <div class="exp-item-content">
-        <span class="exp-dates-badge">2024</span>
-        <p class="exp-role">Generative AI Certification</p>
-        <p class="exp-org">GUVI</p>
-        <ul class="exp-points">
-          <li>Completed hands-on training in Generative AI — LLMs and Transformer architectures</li>
-          <li>Studied advanced NLP techniques including Retrieval-Augmented Generation (RAG)</li>
-        </ul>
-      </div>
-    </div>
+        <!-- Internship / Experience -->
+        <div>
+          <p class="column-header">Experience <span>///</span></p>
 
-  </div>
-</section>
+          <div class="intern-card">
+            <p class="intern-date">June – July 2025</p>
+            <p class="intern-role">Research Intern</p>
+            <p class="intern-org">Rishihood University</p>
+            <ul class="intern-pts">
+              <li>Analyzed survey-based data from large-scale field studies including the Kumbh survey</li>
+              <li>Ensured data accuracy through systematic cleaning, structuring, and validation pipelines</li>
+              <li>Generated statistical summaries and visual reports to communicate findings to researchers</li>
+            </ul>
+          </div>
 
-<!-- SKILLS -->
-<section class="skills-section" id="skills">
-  <p class="section-eyebrow">Technical Toolkit</p>
-  <h2 class="section-title" style="margin-bottom:2.5rem">Skills &amp; <em>Languages</em></h2>
-  <div class="skills-outer-grid">
-    <div>
-      <p class="skill-group-title">Core Proficiency</p>
-      <div class="skill-bars">
-        <div class="skill-row"><div class="skill-row-top"><span>Python</span><span>90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-        <div class="skill-row"><div class="skill-row-top"><span>Pandas / NumPy</span><span>88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div></div>
-        <div class="skill-row"><div class="skill-row-top"><span>Matplotlib / Seaborn</span><span>82%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:82%"></div></div></div>
-        <div class="skill-row"><div class="skill-row-top"><span>SQL</span><span>75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-row"><div class="skill-row-top"><span>Excel / Power Query</span><span>78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:78%"></div></div></div>
-        <div class="skill-row"><div class="skill-row-top"><span>JavaScript</span><span>60%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:60%"></div></div></div>
-      </div>
+          <div class="intern-card">
+            <p class="intern-date">2024</p>
+            <p class="intern-role">Generative AI Certification</p>
+            <p class="intern-org">GUVI</p>
+            <ul class="intern-pts">
+              <li>Completed hands-on training in Generative AI — LLMs and Transformer architectures</li>
+              <li>Studied advanced NLP techniques including Retrieval-Augmented Generation (RAG)</li>
+            </ul>
+          </div>
 
-      <p class="skill-group-title" style="margin-top:2rem">Languages &amp; Runtimes</p>
-      <div class="lang-chips">
-        <div class="lang-chip"><div class="lang-dot" style="background:#f5c842"></div><span class="lang-label">Python</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:#5b9cf6"></div><span class="lang-label">SQL</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:#34d399"></div><span class="lang-label">JavaScript</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:#4ade80"></div><span class="lang-label">MongoDB</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:#e8196c"></div><span class="lang-label">Streamlit</span></div>
+          <!-- Achievements teaser -->
+          <div class="intern-card" style="border-left-color:var(--yellow)">
+            <p class="intern-date" style="color:var(--yellow)">Recognition</p>
+            <p class="intern-role">Achievements</p>
+            <p class="intern-org" style="color:var(--ink3);font-weight:400;font-size:.76rem;line-height:1.65;margin-top:.3rem">
+              Ignite 2025 Finalist (Top 10) &nbsp;·&nbsp; Viksit Bharat Young Leaders Top 0.1% &nbsp;·&nbsp; SOF IGKO International Rank 139 &nbsp;·&nbsp; Research Intern in Year 1
+            </p>
+          </div>
+        </div>
       </div>
 
-      <p class="skill-group-title" style="margin-top:2rem">Concepts</p>
-      <div class="lang-chips">
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--pink)"></div><span class="lang-label">Data Cleaning</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--blue)"></div><span class="lang-label">Statistical Analysis</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--green)"></div><span class="lang-label">Dashboarding</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--yellow)"></div><span class="lang-label">Time Series</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--pink-light)"></div><span class="lang-label">Monte Carlo Sim</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--text2)"></div><span class="lang-label">Data Interpretation</span></div>
+      <!-- Featured Projects -->
+      <div class="featured-section">
+        <div class="featured-header">
+          <h3>Featured <em>Projects</em></h3>
+          <a class="see-all-link" href="projects.html">See all projects →</a>
+        </div>
+        <div class="featured-grid">
+          <a class="feat-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
+            <span class="feat-badge badge-py">Python</span>
+            <p class="feat-title">AI Job Market Analysis</p>
+            <p class="feat-desc">Mapped hiring trends across 50+ AI roles to reveal which skills command top salaries.</p>
+          </a>
+          <a class="feat-card" href="https://github.com/Saumya-Mishra-536/Covid-Impact-Analysis" target="_blank">
+            <span class="feat-badge badge-py">Python</span>
+            <p class="feat-title">Covid-19 India Impact</p>
+            <p class="feat-desc">End-to-end pipeline across 43 Indian states — 10+ visualizations on pandemic trends.</p>
+          </a>
+          <a class="feat-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
+            <span class="feat-badge badge-tb">Tableau</span>
+            <p class="feat-title">AI Job Market Dashboard</p>
+            <p class="feat-desc">Visual storytelling across AI career landscape — salaries, roles, demand patterns.</p>
+          </a>
+          <a class="feat-card" href="https://github.com/Saumya-Mishra-536/Blinkit_Analytics_Center" target="_blank">
+            <span class="feat-badge badge-lk">Looker Studio</span>
+            <p class="feat-title">Blinkit Analytics Center</p>
+            <p class="feat-desc">KPI dashboard on 5000+ row dataset — delivery, inventory &amp; customer insights.</p>
+          </a>
+        </div>
+        <div class="see-all-row">
+          <a href="projects.html">View all 8 projects — including Trader Sentiment, Economic Shock Analyzer &amp; more →</a>
+        </div>
       </div>
-    </div>
 
-    <div>
-      <p class="skill-group-title">Tools &amp; Platforms</p>
-      <div class="tools-grid">
-        <div class="tool-chip"><p class="tool-name">Pandas</p><p class="tool-use">Data Cleaning · EDA</p></div>
-        <div class="tool-chip"><p class="tool-name">NumPy</p><p class="tool-use">Numerical Computing</p></div>
-        <div class="tool-chip"><p class="tool-name">Matplotlib</p><p class="tool-use">Visualization</p></div>
-        <div class="tool-chip"><p class="tool-name">Seaborn</p><p class="tool-use">Statistical Plots</p></div>
-        <div class="tool-chip"><p class="tool-name">Looker Studio</p><p class="tool-use">KPI Dashboards</p></div>
-        <div class="tool-chip"><p class="tool-name">Tableau</p><p class="tool-use">Visual Storytelling</p></div>
-        <div class="tool-chip"><p class="tool-name">Excel</p><p class="tool-use">Power Query · Models</p></div>
-        <div class="tool-chip"><p class="tool-name">Streamlit</p><p class="tool-use">Analytics Apps</p></div>
-        <div class="tool-chip"><p class="tool-name">MongoDB</p><p class="tool-use">NoSQL Storage</p></div>
-        <div class="tool-chip"><p class="tool-name">SQL</p><p class="tool-use">Querying · Modeling</p></div>
-      </div>
-
-      <p class="skill-group-title" style="margin-top:2rem">Soft Skills</p>
-      <div class="lang-chips">
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--pink)"></div><span class="lang-label">Public Speaking</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--blue)"></div><span class="lang-label">Leadership</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--green)"></div><span class="lang-label">Critical Thinking</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--yellow)"></div><span class="lang-label">Collaboration</span></div>
-        <div class="lang-chip"><div class="lang-dot" style="background:var(--pink-light)"></div><span class="lang-label">Problem Solving</span></div>
-      </div>
     </div>
   </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <p class="section-eyebrow">Recognition &amp; Leadership</p>
-  <h2 class="section-title" style="margin-bottom:2.5rem">Achievements &amp; <em>Impact</em></h2>
-  <div class="achieve-grid">
-    <div class="achieve-card">
-      <span class="achieve-num">01</span>
-      <div class="achieve-text"><strong>Vice President — Public Policy Club</strong>Led events, research discussions, and policy workshops at Rishihood University.</div>
-    </div>
-    <div class="achieve-card">
-      <span class="achieve-num">02</span>
-      <div class="achieve-text"><strong>Ignite 2025 Finalist — Top 10</strong>Selected among top 10 startup ideas at the BITS Goa Entrepreneurship Bootcamp.</div>
-    </div>
-    <div class="achieve-card">
-      <span class="achieve-num">03</span>
-      <div class="achieve-text"><strong>Viksit Bharat Young Leaders Dialogue — Top 0.1%</strong>National finalist representing youth leadership and forward policy vision.</div>
-    </div>
-    <div class="achieve-card">
-      <span class="achieve-num">04</span>
-      <div class="achieve-text"><strong>SOF IGKO — School &amp; City Rank 1</strong>International Rank 139. National excellence in general knowledge Olympiad.</div>
-    </div>
-    <div class="achieve-card">
-      <span class="achieve-num">05</span>
-      <div class="achieve-text"><strong>NSO — School &amp; City Rank 1</strong>National Science Olympiad top performer · Level 2 qualifier.</div>
-    </div>
-    <div class="achieve-card">
-      <span class="achieve-num">06</span>
-      <div class="achieve-text"><strong>Research Intern — Year 1</strong>Real-world field research on large-scale survey data at university level in first year.</div>
+  <div class="site-footer">
+    <p class="footer-copy">© 2025 Saumya Mishra · Data Analytics Portfolio</p>
+    <div class="footer-links">
+      <a href="https://github.com/Saumya-Mishra-536" target="_blank">GitHub</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
     </div>
   </div>
-</section>
-
-<!-- PROJECTS PREVIEW -->
-<section class="projects-preview">
-  <div class="projects-preview-header">
-    <div><p class="section-eyebrow">Featured Work</p><h2 class="section-title">Featured <em>Projects</em></h2></div>
-    <a class="btn-outline" href="projects.html">View All Projects →</a>
-  </div>
-  <div class="mini-cards">
-    <a class="mini-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
-      <span class="mini-card-tag tag-python">Python</span>
-      <p class="mini-card-title">AI Job Market Analysis</p>
-      <p class="mini-card-desc">Mapped hiring trends across 50+ AI roles to reveal which skills command top salaries.</p>
-    </a>
-    <a class="mini-card" href="https://github.com/Saumya-Mishra-536/Covid-Impact-Analysis" target="_blank">
-      <span class="mini-card-tag tag-python">Python</span>
-      <p class="mini-card-title">Covid-19 India Impact Analysis</p>
-      <p class="mini-card-desc">End-to-end pipeline across 43 Indian states — 10+ visualizations on pandemic trends.</p>
-    </a>
-    <a class="mini-card" href="https://github.com/Saumya-Mishra-536/SectionC_Group2_AI-Job-Market-Analysis" target="_blank">
-      <span class="mini-card-tag tag-tableau">Tableau</span>
-      <p class="mini-card-title">AI Job Market Dashboard</p>
-      <p class="mini-card-desc">Visual storytelling across AI career landscape — salaries, roles, demand patterns.</p>
-    </a>
-    <a class="mini-card" href="https://github.com/Saumya-Mishra-536" target="_blank">
-      <span class="mini-card-tag tag-looker">Looker Studio</span>
-      <p class="mini-card-title">Blinkit Analytics Center</p>
-      <p class="mini-card-desc">KPI dashboard on 5000+ row dataset — delivery, inventory &amp; customer insights.</p>
-    </a>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <p class="section-eyebrow" style="text-align:center">Let's Connect</p>
-  <h2 class="section-title" style="text-align:center">Data tells a story.<br><em>Let's tell yours.</em></h2>
-  <p>Open to internships, freelance projects, and collaborations in data analytics, BI, and dashboard design.</p>
-  <a class="btn-primary" href="contact.html">Let's Work Together →</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p class="footer-left">© 2025 Saumya Mishra · Data Analytics Portfolio</p>
-  <div class="footer-right">
-    <a href="https://github.com/Saumya-Mishra-536" target="_blank">GitHub</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</footer>
-
 </div>
 
 <script>
-const bar=document.getElementById('loaderBar'),pct=document.getElementById('loaderPct'),loader=document.getElementById('loader'),site=document.getElementById('site');
-let current=0;
-function increment(){
-  if(current>=100){loader.classList.add('done');site.classList.add('visible');return}
-  const jump=current<70?Math.random()*4+1:Math.random()*1.5+0.3;
-  current=Math.min(100,current+jump);
-  bar.style.width=current+'%';
-  pct.textContent=Math.floor(current)+'%';
-  setTimeout(increment,current<80?60:90);
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active','exit-up');
+  });
+  const target=document.getElementById(id);
+  target.classList.add('active');
+  // reset scroll
+  const body=target.querySelector('.page-body');
+  if(body) body.scrollTop=0;
 }
-setTimeout(increment,400);
 </script>
 </body>
 </html>
